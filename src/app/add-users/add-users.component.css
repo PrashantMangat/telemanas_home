@@ -1,0 +1,97 @@
+.tick-icon {
+    width: 80px;
+    padding-top: 10px;
+}
+
+.select-css {
+    display: block;
+    font-size: 12px;
+    font-family: sans-serif;
+    color: #242424;
+    text-align: inherit;
+    padding: .85rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 125px;
+    margin-top: 0px;
+    border: 1px solid #eadfdf;
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, .04);
+    border-radius: 6px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    background-repeat: no-repeat, repeat;
+    margin-top: 5px;
+}
+
+.select-css::-ms-expand {
+    display: none;
+}
+
+.select-css:hover {
+    border-color: #888;
+}
+
+.select-css:focus {
+    outline: none;
+}
+
+.select-css option {
+    font-weight: normal;
+}
+
+.mat-icon {
+    cursor: pointer;
+}
+
+.purple {
+    color: #813D7E;
+}
+
+.btn-add {
+    background-color: rgb(231, 214, 231);
+    color: #813D7E;
+    border-radius: 8px !important;
+}
+
+.icons {
+    font-size: 15px;
+    display: inline;
+    vertical-align: middle;
+    position: relative;
+    top: -1.2px;
+    padding-right: 2px;
+}
+
+.sidebar_icon {
+    font-size: 24px;
+    display: inline;
+    vertical-align: middle;
+    position: relative;
+    top: -4.2px;
+    padding-right: 2px;
+}
+
+tr {
+    border-bottom: 1px solid #dedede;
+    padding-bottom: 6px;
+}
+
+@media (min-width: 766px) {
+    .side-border {
+        border-right: 1px solid #ccc;
+    }
+}
+
+@media (max-width: 766px) {
+    .card,
+    .card-body {
+        padding: 0 !important;
+        background: none !important;
+        background-color: none !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+}

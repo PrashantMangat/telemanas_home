@@ -1,0 +1,217 @@
+<app-header></app-header>
+
+<div class="container mt-6">
+    <mat-card>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 col-6">
+                        <p class="common_text"> <b>Consultation ID</b></p>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <p class="common_text"> {{rec.referenceID}}</p>
+                    </div>
+
+                    <div class="col-md-6 col-6">
+                        <p class="common_text"> <b>Date of Consultation</b></p>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <p class="common_text"> {{rec.dateOfConsultation}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 col-6">
+                        <p class="common_text"> <b>Visit</b></p>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <p class="common_text">{{rec.visit}}</p>
+                    </div>
+
+                    <div class="col-md-6 col-6">
+                        <p class="common_text"> <b>Visit Type</b></p>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <p class="common_text">{{rec.visitType}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 col-6">
+                        <p class="common_text"> <b>Address</b></p>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <p class="common_text">{{rec.addressLine1}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+
+    <div class="mt-3">
+        <h6 class="headings">Patient Details</h6>
+    </div>
+    <mat-card>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 col-6">
+                        <p class="common_text"> <b>Age</b></p>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <p class="common_text">{{rec.age}}</p>
+                    </div>
+
+                    <div class="col-md-6 col-6">
+                        <p class="common_text"> <b>Gender</b></p>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <p class="common_text">{{rec.gender}}</p>
+                    </div>
+
+                    <div class="col-md-6 col-6">
+                        <p class="common_text"> <b>Categories of fecility</b></p>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <p class="common_text">{{rec.facilityCatagories}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 col-6">
+                        <p class="common_text"> <b>Status of Covid-19 Test</b></p>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <p class="common_text">{{rec.covidTestStatus}}</p>
+                    </div>
+
+                    <div class="col-md-6 col-6">
+                        <p class="common_text"> <b>Any Psychiatric Problem?</b></p>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <p class="common_text">{{rec.psychiatricProblem}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+
+    <div class="mt-3">
+        <mat-card>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3 col-12">
+                            <p class="common_text"> <b> Complaints and Duration </b></p>
+                        </div>
+                        <div class="col-md-9 col-12">
+                            <p class="common_text" *ngFor="let comp of complaints">{{comp.complaint}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class="mt-3">
+        <mat-card>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3 col-12">
+                            <p class="common_text"> <b> Illness Summary for Mental Health Problems </b></p>
+                        </div>
+                        <div class="col-md-9 col-12">
+                            <p class="common_text">{{rec.illnessSummary}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class="mt-3">
+        <mat-card>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3 col-12">
+                            <p class="common_text"> <b> Diagnosis and ICD Code </b></p>
+                        </div>
+                        <div class="col-md-9 col-12">
+                            <div *ngFor="let dia of diagnosis">
+                                <p class="common_text">{{dia?.diagnosisType}} - {{dia?.icdcode}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class="mt-3">
+        <mat-card>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+
+                        <div class="col-md-6 col-6">
+                            <p class="common_text"> <b>Counselling</b></p>
+                        </div>
+                        <div class="col-md-6 col-6">
+                            <p class="common_text">{{rec.counselling}}</p>
+                        </div>
+
+                        <div class="col-md-6 col-6">
+                            <p class="common_text"> <b>Treatment</b></p>
+                        </div>
+                        <div class="col-md-6 col-6">
+                            <p class="common_text">{{rec.treatment}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class="mt-3">
+        <mat-card>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3 col-12">
+                            <p class="common_text"> <b> Prescription </b></p>
+                        </div>
+                        <div class="col-md-9 col-12">
+                            <p class="common_text" *ngFor="let ps of presc">{{ps.med}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class="mt-3">
+        <mat-card>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3 col-12">
+                            <p class="common_text"> <b> Notes </b></p>
+                        </div>
+                        <div class="col-md-9 col-12">
+                            <p class="common_text">{{rec.notes}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class="text-center m-3">
+        <button mat-raised-button class="btn btn-secondary mr-3" (click)="back()">Back</button>
+    </div>
+</div>

@@ -1,0 +1,417 @@
+<app-header></app-header>
+<div class="container mt-6">
+    <div class="card purple mt-3" *ngIf="role !== 'Admin'">
+        <div class="text-center p-3">
+            <h6 class="text-white">Create New Patient Record</h6>
+            <button mat-raised-button class="btn btn-manual mt-2" (click)="fillForm()">Fill Form</button>
+        </div>
+    </div>
+    <div class="mt-3">
+        <h6 class="headings">Dashboard</h6>
+        <form>
+            <div class="row mt-1">
+                <div class="col-md-3 col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>From Date</mat-label>
+                        <input [(ngModel)]="fromDate" (focus)="fromPicker5.open()" [max]="today" name="fromDate" required matInput [matDatepicker]="fromPicker5" placeholder="From Date" readonly>
+                        <mat-datepicker-toggle matSuffix [for]="fromPicker5"></mat-datepicker-toggle>
+                        <mat-datepicker #fromPicker5></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-3 col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>To Date</mat-label>
+                        <input [(ngModel)]="toDate" (focus)="toPicker5.open()" [min]="fromDate" [max]="today" name="toDate" required matInput [matDatepicker]="toPicker5" placeholder="To Date" readonly>
+                        <mat-datepicker-toggle matSuffix [for]="toPicker5"></mat-datepicker-toggle>
+                        <mat-datepicker #toPicker5></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-1 text-center">
+                    <button mat-raised-button class="btn btn-primary mt-2" (click)="getDashboardCount()">Fetch Data</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h6>
+                        <mat-icon class="chart_icon">show_chart</mat-icon> Overview last 7 days</h6>
+                    <!--<div class="row">
+               <div class="col"><h6>TotalConsultations </h6></div> 
+               <div class="col"><h6> Covid-19 Positive </h6></div>
+               <div class="col"> <h6>Migrants </h6> </div>
+               <div class="col"><h6>Quarantined/Isolated </h6></div>    
+            </div>-->
+
+                    <div *ngIf="showLChart">
+                        <canvas baseChart height="100px" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [chartType]="lineChartType" [plugins]="lineChartPlugins"></canvas>
+                    </div>
+                    <div class="legend text-center mt-4">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <p class="legends legends1"></p>Total Consultations</li>
+                            <li class="list-inline-item">
+                                <p class="legends legends2"></p>Covid-19 Positive</li>
+                            <li class="list-inline-item">
+                                <p class="legends legends3"></p>Migrants</li>
+                            <li class="list-inline-item">
+                                <p class="legends legends4"></p>Quarantined / Isolated</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-6 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h6>
+                        <mat-icon class="chart_icon">show_chart</mat-icon> Age Group</h6>
+                    <div style="display: block;" *ngIf="showBarChart">
+                        <canvas baseChart height="170px" [datasets]="barChartData" [labels]="barChartLabels" [colors]="barChartColor" [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+                </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--<div class="row mt-3">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h6>Total Consultations</h6>
+                    <h1>{{ countArray?.TotalConsultations }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+        <!----
+    <div class="row mt-2">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="headings">Age</h6>
+                    Child :<b> {{ countArray?.TotalConsultationChild }} </b> <br> Adult :<b> {{ countArray?.TotalConsulationAdult }} </b>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="headings">Gender</h6>
+                    Male : <b> {{ countArray?.TotalConsultationMale }} </b> <br>
+                    <div class="row">
+                        <div class="col-md-6 col-6">
+                            Female : <b> {{ countArray?.TotalConsultationFemale }} </b> </div>
+                        <div class="col-md-6 col-12"> Other :<b> {{ countArray?.TotalConsultationOther }}</b></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="headings">Visit </h6>
+                    New: <b> {{ countArray?.TotalNew }}</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ this.totalNew || "0"}} % <br> Follow-Up:
+                    <b> {{ countArray?.TotalFollowUp }}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ this.totalFollowup || "0" }} %
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="headings">Type of Visit</h6>
+                    Tele: <b> {{ countArray?.TotalTele }} </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ this.totalTele || "0" }} % <br> 
+                    In-person:<b> {{ countArray?.TotalInPerson }}  </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ this.totalInperson || "0"}} %
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="headings">Category of facility</h6>
+                    <div class="row">
+                        <div class="col-md-6 col-6">Isolation: <b> {{ countArray?.TotalFIsolation }} </b> &nbsp;&nbsp; {{ this.totalIso || "0"}} % </div>
+                        <div class="col-md-6 col-12">Migrants:<b> {{ countArray?.TotalFMigrant }} </b> &nbsp;&nbsp;&nbsp; {{ this.totalMigrant || "0"}} % <br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-6">Quarantine <b> {{ countArray?.TotalFQuarantine }}</b>&nbsp;&nbsp;&nbsp;{{ this.totalQuarant|| "0" }}%</div>
+                        <div class="col-md-6 col-12">Others: <b> {{ countArray?.TotalFOthers }} </b> &nbsp;&nbsp;&nbsp; {{ this.totalOther || "0"}} % <br></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="headings"> Psychiatric Problem </h6>
+                    Yes: <b> {{ countArray?.TotalPsychiatricProblem }}</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ this.totalpsycyes || "0"}} %<br> No: <b> {{ this.psychiNo }}</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{this.totalPsychiNo || "0"}} %
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="headings">Tested positive</h6>
+                    Counselled : <b> {{ countArray?.TotalCounselledPositive }} </b> <br> Treated : <b> {{ countArray?.TotalTreatedPositive }} </b>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="headings">Home Quarantined/Isolated Passengers</h6>
+                    Counselled : <b> {{ countArray?.TotalCounselledHQ }} </b><br> Treated : <b> {{ countArray?.TotalTreatedHQ }} </b>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="headings">Migrants</h6>
+                    Counselled : <b> {{ countArray?.TotalCounselledMigrants}} </b><br> Treated : <b> {{ countArray?.TotalTreatedMigrants }} </b>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+
+
+
+        <!--<div class="col-md-4 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <h6>
+                        <mat-icon class="chart_icon">show_chart</mat-icon>
+                        Age Group
+                    </h6>
+                    <div class="row mt-3">
+                        <div class="col-md-5 col-6">
+                            Child <b>{{ countArray?.TotalConsultationChild }} </b> </div>
+                        <div class="col-md-7 col-6"> Adult <b>{{ countArray?.TotalConsulationAdult }} </b></div>
+                    </div>
+                    <canvas id="canvas" baseChart height="190px" [data]="AgeData" [labels]="AgeLabels" [chartType]="ChartType" [colors]="DoughnutColor" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <h6>
+                        <mat-icon class="chart_icon">show_chart</mat-icon>
+                        Gender
+                    </h6>
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-4 pr-0">
+                            Male <b>{{ countArray?.TotalConsultationMale }} </b></div>
+                        <div class="col-md-4 col-4 pr-0 pl-0">Female <b> {{ countArray?.TotalConsultationFemale }}</b></div>
+                        <div class="col-md-4 col-4 pl-0">Other <b> {{ countArray?.TotalConsultationOther }}</b></div>
+                    </div>
+                    <canvas baseChart height="190px" [data]="GenderData" [labels]="GenderLabels" [chartType]="ChartType" [colors]="DoughnutColor" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                </div>
+            </div>
+        </div>-->
+        <div class="col-md-6 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h6>
+                        <mat-icon class="chart_icon">show_chart</mat-icon>
+                        Category of Facility
+                    </h6>
+                    <div class="row mt-3 mb-2">
+
+                        <div class="col-6 col-md-6 numbers numbers numbers numbers numbers numbers numbers">Isolation <b> {{ countArray?.TotalFIsolation }}</b></div>
+                        <div class="col-6 col-md-6 numbers numbers numbers numbers numbers numbers numbers"> Migrants <b>{{ countArray?.TotalFMigrant }} </b></div>
+                        <div class="col-6 col-md-6 numbers numbers numbers numbers numbers numbers numbers"> Quarantine <b>{{ countArray?.TotalFQuarantine }}</b> </div>
+                        <div class="col-6 col-md-6 numbers numbers numbers numbers numbers numbers numbers"> Others <b>{{ countArray?.TotalFOthers }}</b></div>
+                        <div class="col-6 col-md-6 numbers numbers numbers numbers numbers numbers numbers"> Doctors <b>{{ countArray?.TotalFDoctors }}</b></div>
+                        <div class="col-6 col-md-6 numbers numbers numbers numbers numbers numbers numbers"> Health Workers <b>{{ countArray?.TotalFHealthWorkers }}</b></div>
+
+
+                        <!---- <div class="col-md-6 col-6">
+                            Isolation <b> {{ countArray?.TotalFIsolation }}</b></div>
+                        <div class="col-md-6 col-6"> Migrants <b>{{ countArray?.TotalFMigrant }} </b> </div>
+                        <div class="col-md-6 col-6 pr-0">Quarantine <b>{{ countArray?.TotalFQuarantine }}</b></div>
+                        <div class="col-md-6 col-6"> Others <b>{{ countArray?.TotalFOthers }}</b></div>-->
+                    </div>
+                    <canvas baseChart height="124px" [data]="FecilityData" [labels]="FecilityLabels" [chartType]="ChartType" [options]="DoughnutChartOptions" [colors]="DoughnutColor" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-4 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <h6>
+                        <mat-icon class="chart_icon">show_chart</mat-icon>
+                        New Vs Follow-ups
+                    </h6>
+                    <div class="row mt-3 mb-2">
+                        <div class="col-md-5 col-6 numbers numbers numbers numbers numbers numbers">New <b>{{ countArray?.TotalNew }}</b></div>
+                        <div class="col-md-7 col-6 numbers numbers numbers numbers numbers numbers"> Follow-Up <b>{{ countArray?.TotalFollowUp }}</b></div>
+                    </div>
+                    <canvas baseChart height="190px" [data]="VisitData" [labels]="VisitLabels" [chartType]="ChartType" [options]="DoughnutChartOptions" [colors]="DoughnutColor" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-4 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <h6>
+                        <mat-icon class="chart_icon">show_chart</mat-icon>
+                        Mode of Consultation
+                    </h6>
+                    <div class="row mt-3 mb-2">
+                        <div class="col-md-5 col-6 numbers numbers numbers numbers numbers">
+                            Tele <b>{{ countArray?.TotalTele }}</b> </div>
+                        <div class="col-md-7 col-6 numbers numbers numbers numbers numbers">In-person <b> {{ countArray?.TotalInPerson }}</b></div>
+                    </div>
+                    <canvas baseChart height="190px" [data]="VisitTypeData" [labels]="VisitTypeLabels" [chartType]="ChartType" [options]="DoughnutChartOptions" [colors]="DoughnutColor" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <h6>
+                        <mat-icon class="chart_icon">show_chart</mat-icon>
+                        Psychiatric Problem
+                    </h6>
+                    <div class="row mt-3 mb-2">
+                        <div class="col-md-5 col-6 numbers numbers numbers numbers">
+                            Yes <b>{{ countArray?.TotalPsychiatricProblem }}</b></div>
+                        <div class="col-md-7 col-6 numbers numbers numbers numbers">No <b>{{ this.psychiNo }}</b></div>
+                    </div>
+                    <canvas baseChart height="190px" [data]="PsychiatricData" [labels]="PsychiatricLabels" [chartType]="ChartType" [options]="DoughnutChartOptions" [colors]="DoughnutColor" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">  </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-4 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <h6>
+                        <mat-icon class="chart_icon">show_chart</mat-icon>
+                        Covid-19 Positive
+                    </h6>
+                    <div class="row mt-1 mb-2">
+                        <div class="col-md-6 col-6 pr-0 numbers numbers numbers">
+                            Counselled <b> {{ countArray?.TotalCounselledPositive }} </b> </div>
+                        <div class="col-md-6 col-6 numbers numbers numbers"> Treated : <b> {{ countArray?.TotalTreatedPositive }} </b></div>
+                    </div>
+                    <canvas baseChart height="190px" [data]="testPositiveData" [labels]="testPositiveLabels" [chartType]="ChartType" [options]="DoughnutChartOptions" [colors]="DoughnutColor" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <h6>
+                        <mat-icon class="chart_icon">show_chart</mat-icon>
+                        Migrants
+                    </h6>
+                    <div class="row mt-1 mb-2">
+                        <div class="col-md-6 col-6 numbers numbers">
+                            Counselled <b>{{ countArray?.TotalCounselledMigrants}}</b> </div>
+                        <div class="col-md-6 col-6 numbers numbers">Treated:<b> {{ countArray?.TotalTreatedMigrants }}</b></div>
+                    </div>
+                    <canvas baseChart height="190px" [data]="MigrantsData" [labels]="MigrantsLabels" [chartType]="ChartType" [options]="DoughnutChartOptions" [colors]="DoughnutColor" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <h6>
+                        <mat-icon class="chart_icon">show_chart</mat-icon>
+                        Quarantined / Isolated
+                    </h6>
+                    <div class="row mt-1 mb-2">
+                        <div class="col-md-6 col-6 pr-0 numbers">
+                            Counselled <b> {{ countArray?.TotalCounselledHQ }} </b></div>
+                        <div class="col-md-6 col-6 numbers"> Treated <b> {{ countArray?.TotalTreatedHQ }} </b></div>
+                    </div>
+                    <canvas baseChart height="190px" [data]="HomeIsolateData" [labels]="HomeIsolateLabels" [chartType]="ChartType" [options]="DoughnutChartOptions" [colors]="DoughnutColor" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"> </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="text-center p-3">
+        <button mat-raised-button class="btn btn-primary" (click)="getAllRecordsUrl()">View Records</button>
+    </div>
+
+    <div *ngIf="showRecord">
+        <div class="row mt-2 mb-2">
+            <div class="col-md-4" *ngFor="let rec of RecordArray">
+                <div class="mt-2">
+                    <mat-card>
+                        <div class="row">
+                            <div class="col-md-6 col-6">
+                                <h6 class="headings"> {{rec.referenceID}} </h6>
+                            </div>
+                            <div class="col-md-6 col-6">
+                                <div class="float-right pb-2"> {{rec.gender}} , {{rec.age}} </div>
+                            </div>
+                        </div>
+
+                        <h6 class="headings"> {{rec.facilityCatagories}} </h6>
+                        {{rec.dateOfConsultation}} <br>
+
+                        <div class="row">
+                            <div class="col-md-8 col-8">
+                                Psychiatric Problem <b> {{rec.psychiatricProblem}} </b>
+                            </div>
+                            <div class="col-md-4 col-4">
+                                <div class="float-right pb-2"><button mat-raised-button class="btn btn-primary btn-tri" (click)="view(rec)">View</button></div>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

@@ -1,0 +1,245 @@
+<app-header></app-header>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+    <p style="color: white; font-size: 16px;">Loading... please wait</p>
+</ngx-spinner>
+<div class="container mt-6">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <ng-container *ngIf="!isUpdated">
+                <h3 class="headings">Update User</h3>
+                <div class="card mt-2 mb-3 p-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-5 col-md-3">
+                                    <p><strong>Name</strong></p>
+                                </div>
+                                <div class="col-7 col-md-9 ml--5">
+                                    <p>{{userObj.firstName | titlecase}} {{userObj?.lastName | titlecase}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-5 col-md-4 col-lg-5">
+                                    <p><strong>Username</strong></p>
+                                </div>
+                                <div class="col-7 col-md-8 col-lg-7 ml--5">
+                                    <p>{{userObj.username}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-5 col-md-3">
+                                    <p><strong>Role</strong></p>
+                                </div>
+                                <div class="col-7 col-md-9 ml--5">
+                                    <p>{{userObj.role}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-5 col-md-4 col-lg-5">
+                                    <p><strong>Created At</strong></p>
+                                </div>
+                                <div class="col-7 col-md-8 col-lg-7 ml--5">
+                                    <p>{{userObj.created_at}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row" *ngFor="let org of userObj?.userOrg">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            <p><strong>Org Id</strong></p>
+                        </div>
+                        <div class="col-6 col-md-8 ml--5">
+                            <p>{{userOrg.org_id}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            <p><strong>Remarks</strong></p>
+                        </div>
+                        <div class="col-6 col-md-8 ml--5">
+                            <p>{{userOrg.org_remarks}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+                    <hr />
+                    <form #addUserForm="ngForm">
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <h6 class="grey">User Details</h6>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Email Address</mat-label>
+                                            <input required #emailID="ngModel" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="emailId" maxlength="100" matInput placeholder="Enter Email Id" />
+                                        </mat-form-field>
+                                        <div *ngIf="emailID.invalid && (emailID.dirty || emailID.touched)" class="text-danger mt--1">
+                                            <div class="f-12" *ngIf="emailID.errors.required">Email Address is required</div>
+                                            <div class="f-12" *ngIf="emailID.errors.minlength">Email Address must be at least 3 characters</div>
+                                            <div class="f-12" *ngIf="emailID.errors.pattern && !emailID.errors.minlength">Invalid Email Address</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Phone Number</mat-label>
+                                            <input required numbersOnly #phone="ngModel" minlength="10" maxlength="10" name="phoneNumber" [(ngModel)]="phoneNumber" matInput placeholder="Enter Phone Number" />
+                                        </mat-form-field>
+                                        <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="text-danger f-12 mt--1">
+                                            <div *ngIf="phone.errors.required">Phone Number is required</div>
+                                            <div *ngIf="phone.errors.minlength">Phone Number must be 10 digits</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Designation</mat-label>
+                                            <input #desg="ngModel" maxlength="50" name="desgnation" [(ngModel)]="desgN" matInput placeholder="Enter Designation" />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Status</mat-label>
+                                            <mat-select name="status" [(ngModel)]="status">
+                                                <mat-option value="ACTIVE">ACTIVE</mat-option>
+                                                <mat-option value="INACTIVE">INACTIVE</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12">
+                                        <h6 class="grey mt-3">Associated with Organization(s)</h6>
+                                        <table>
+                                            <tbody>
+                                                <tr *ngFor="let org of userObj.userOrg; let i = index" class="noBorder row mb-2">
+                                                    <td class="col-md-5 col-12 mb-2">
+                                                        <input disabled [ngModelOptions]="{standalone: true}" [(ngModel)]="org.org_name" class="form-control" type="text" name="{{org.orgName}}" />
+                                                    </td>
+                                                    <td class="col-lg-5 col-md-4 col-8">
+                                                        <input disabled [ngModelOptions]="{standalone: true}" [(ngModel)]="org.org_remarks" class="form-control" type="text" name="{{org.org_remarks}}" />
+                                                    </td>
+                                                    <td class="col-lg-2 col-md-3 col-4 pl-0">
+                                                        <mat-slide-toggle [checked]="org.status === 'ACTIVE' ? true : false" (change)="setValue( i , $event )">
+                                                            {{org.status}}
+                                                        </mat-slide-toggle>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <hr />
+                                    </div>
+                                    <div class="col-md-8">
+                                        <table>
+                                            <tbody>
+                                                <tr *ngFor="let org of dispOrgArr; let i = index" class="noBorder row mb-2">
+                                                    <td class="col-md-12 col-12 mb-2">
+                                                        <input disabled [ngModelOptions]="{standalone: true}" [(ngModel)]="org.orgName" class="form-control" type="text" name="{{org.orgName}}" />
+                                                    </td>
+                                                    <td class="col-md-12 col-12 mb-2" *ngIf="org.subOrgName">
+                                                        <input disabled [ngModelOptions]="{standalone: true}" [(ngModel)]="org.subOrgName" class="form-control" type="text" name="{{org.subOrgName}}" />
+                                                    </td>
+                                                    <td class="col-md-11 col-11">
+                                                        <input disabled [ngModelOptions]="{standalone: true}" [(ngModel)]="org.org_remarks" class="form-control" type="text" name="{{org.org_remarks}}" />
+                                                    </td>
+                                                    <td class="col-md-1 col-1 pl-0">
+                                                        <button class="add_btn" (click)="delOrg(i)">
+                                                            <mat-icon class="sidebar_icon">delete</mat-icon>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Select Organization *</mat-label>
+                                            <mat-select name="org" [(ngModel)]="newOrgObj" (selectionChange)="selectOrg()">
+                                                <mat-option *ngFor="let org of orgArray | sortPipe: 'orgname'" [value]="org">{{org.orgname}} </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <div class="text-danger mt--1">{{showNote}}</div>
+                                    </div>
+                                    <div class="col-md-12" *ngIf="subOrgArr.length > 0">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Select Sub-Organization *</mat-label>
+                                            <mat-select name="suborg" [(ngModel)]="newSubOrgObj" (selectionChange)="setSubOrg()">
+                                                <mat-option *ngFor="let sorg of subOrgArr | sortPipe: 'orgname'" [value]="sorg">{{sorg.orgname | titlecase}} </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-11 col-10" *ngIf="newOrgObj">
+                                        <div>
+                                            <mat-form-field appearance="outline" *ngIf="newOrgObj?.orgid == 1 && showNote !== 'Duplicate Entry!'">
+                                                <mat-label>Primary District *</mat-label>
+                                                <mat-select name="orgRem" [(ngModel)]="newOrg.org_remarks">
+                                                    <mat-option *ngFor="let dist of districtArray" [value]="dist">{{dist}}</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div>
+                                            <mat-form-field appearance="outline" *ngIf="newOrgObj?.orgid != 1">
+                                                <mat-label>Remarks *</mat-label>
+                                                <input name="orgRem" [(ngModel)]="newOrg.org_remarks" matInput placeholder="Enter Remarks" />
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 col-2 pl-0" *ngIf="newOrgObj && showNote !== 'Duplicate Entry!'">
+                                        <div class="mt-1">
+                                            <button class="add_btn" (click)="addMoreOrg()" [disabled]="activeAddBtn()">
+                                                <mat-icon>add_circle</mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="text-danger" *ngIf="duplicateEntry">
+                                            Duplicate Entry!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4 mb-3">
+                            <button mat-raised-button class="btn btn-secondary mr-2" (click)="cancel()">Cancel</button>
+                            <button mat-raised-button class="btn btn-primary" [disabled]="addUserForm.invalid" (click)="update()">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+    <ng-container *ngIf="isUpdated">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <mat-card>
+                    <mat-card-content>
+                        <div class="text-center">
+                            <img mat-card-image class="tick-icon" src="assets/images/check_circle_outline.png" alt="circle" />
+                            <h6>
+                                User details have been updated Successfully <br />
+                                <br />
+                                <b>ID Number {{userObj.userId}}</b>
+                            </h6>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                <div class="text-center m-3">
+                    <button mat-raised-button class="btn btn-primary" (click)="cancel()">Ok</button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

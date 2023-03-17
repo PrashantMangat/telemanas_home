@@ -1,0 +1,26 @@
+ .tick-icon {
+     width: 60px;
+     padding-top: 10px;
+ }
+ 
+ p {
+     font-size: 14px !important;
+ }
+ 
+ .ml--5 {
+     margin-left: -2rem !important;
+ }
+ 
+ .sidebar_icon {
+     font-size: 24px;
+     display: inline;
+     vertical-align: middle;
+     position: relative;
+     top: -4.2px;
+     padding-right: 2px;
+ }
+ 
+ tr {
+     border-bottom: 1px solid #dedede;
+     padding-bottom: 6px;
+ }

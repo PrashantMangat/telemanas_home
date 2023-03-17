@@ -1,0 +1,177 @@
+@media only screen and (min-width:580px) {
+    #map-area {
+        margin-left: auto;
+        margin-right: auto;
+        /* padding-left: 8px; */
+        display: block;
+        height: 500px;
+        width: 85%;
+        margin: 0 auto;
+        font-family: 'Rubik' !important;
+    }
+    .div2 {
+        justify-content: center;
+        text-align: center;
+        /* border-radius: 10px; */
+        border: 1px solid #295583;
+        margin-top: 0px;
+        margin-left: 9%;
+        box-shadow: 1px 5px 2px -2px rgb(0 0 0 / 20%), 1px 5px 2px 1px rgb(0 0 0 / 14%);
+    }
+    .dbox {
+        font-family: 'Rubik' !important;
+        font-style: normal;
+        font-weight: 100;
+        font-size: 14px;
+        color: gray;
+        display: flex;
+        justify-content: right;
+        width: 100%;
+        flex: right;
+        margin-top: 30px;
+        margin-top: 10px;
+        text-align: left;
+        margin-right: 5px;
+    }
+    .hbox {
+        float: left;
+        margin-left: auto;
+        align-content: left;
+        position: absolute;
+        background-color: #931621;
+        color: #FFFFFF;
+        font-weight: 500;
+    }
+    .hdiv {
+        font-family: 'Rubik' !important;
+        font-style: normal;
+        font-weight: 100;
+        font-size: 16px;
+        color: rgb(91, 90, 90);
+        align-items: right;
+        display: flex;
+        justify-content: right !important;
+        width: 100%;
+        margin-top: -10px !important;
+    }
+   
+}
+
+@media (max-width: 576px) {
+    #map-area {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+        padding-left: 1px;
+        display: block;
+        height: 500px;
+        width: 105%;
+    }
+    .hdiv {
+        font-family: 'Rubik' !important;
+        font-style: normal;
+        font-weight: 100;
+        font-size: 12px;
+        color: rgb(73, 72, 72);
+        align-items: right;
+        display: flex;
+        justify-content: right !important;
+        width: 100%;
+        margin-top: -10px !important;
+    }
+    .hbox {
+        float: left;
+        margin-left: auto;
+        align-content: left;
+        position: absolute;
+        background-color: #931621;
+        color: #FFFFFF;
+        font-weight: 500;
+    }
+    .dbox {
+        font-family: 'Rubik' !important;
+        font-style: normal;
+        font-weight: 100;
+        font-size: 14px;
+        color: gray;
+        display: flex;
+        justify-content: right;
+        width: 100%;
+        flex: right;
+        margin-top: 30px;
+        margin-top: 10px;
+        text-align: left;
+        margin-right: 7px;
+    }
+    .div2 {
+        justify-content: center;
+        text-align: center;
+        /* border-radius: 10px; */
+        border: 1px solid #295583;
+        margin-top: 0px;
+        /* margin-left:9%; */
+        box-shadow: 1px 5px 2px -2px rgb(0 0 0 / 20%), 1px 5px 2px 1px rgb(0 0 0 / 14%);
+    }
+    
+}
+
+.selected {
+    stroke: red;
+    stroke-width: 1;
+}
+
+.d3-tip {
+    line-height: 0;
+    /* font-weight: bold;
+    padding: 12px; */
+    background: transparent;
+    color: #fff;
+    border-radius: 0px;
+}
+
+
+/* Creates a small triangle extender for the tooltip */
+
+
+/* .d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    line-height: 1;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+  }*/
+
+
+/* Style northward tooltips differently */
+
+
+/* .d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+  }  */
+
+
+/* div.d3-tip {   
+    position: absolute;         
+} */
+
+.content {
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+}
+
+.mt25 {
+    margin-top: 25px !important;
+}
+
+::ng-deep .tooltip {
+    /* your own custom styles here */
+    /* e.g. */
+    color: yellow;
+}

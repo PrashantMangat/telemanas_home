@@ -1,0 +1,67 @@
+<nav class="navbar navbar-inverse navbackground fixed-top fixed-left" style="height: 80px !important; 
+">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="header-brand mr-2" (click)="dashboard()"><img src="assets/images/india_logo.png" alt="india map"></a>
+            <a class="navbar-brand" (click)="dashboard()">Tele MANAS Dashboard</a>
+        </div>
+        <nav class="sidenav" *ngIf="external !== 'true'">
+            <span class="mr-2">
+                 <a class="pointer" [matMenuTriggerFor]="menu">
+                    <mat-icon class="sidebar_icon1">person</mat-icon>
+                    {{userName}}
+                    <mat-icon class="sidebar_icon_arrow">keyboard_arrow_down</mat-icon>
+                </a>
+                <mat-menu class="mt-2" #menu="matMenu">
+                <!-- <a  mat-menu-item (click)="policy()" class="links">
+                    <mat-icon class="sidebar_icon">description</mat-icon> Privacy Policy
+                </a> -->
+                <a  mat-menu-item (click)="updatePass()" class="links">
+                    <mat-icon class="sidebar_icon">lock</mat-icon> Change Password
+                </a>
+                <a mat-menu-item (click)="logOut()" class="links"> 
+                    <mat-icon class="sidebar_icon">logout</mat-icon> Logout
+                </a>
+                </mat-menu>
+            </span>
+        </nav>
+    </div>
+</nav>
+
+<div class="mobile-sidenav" *ngIf="external !== 'true'">
+    <!-- <button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu" class="mhe_button">
+        <mat-icon>business</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" class="mt-2">
+        <button mat-menu-item *ngFor="let org of orgArr | sortPipe: 'orgname'" (click)="selectMHE(org)" style="z-index: 99999;">{{org.orgname}}</button>
+    </mat-menu> -->
+
+    <label for="menu-opener" class="OpenMenuButton"><mat-icon>menu</mat-icon></label>
+    <input type="checkbox" data-menu="DrawerMenu" id="menu-opener" hidden>
+    <aside class="DrawerMenu">
+        <nav class="Menu">
+            <div class="mt-3">
+                <!-- <a>
+                    <mat-icon class="sidebar_icon">business</mat-icon> {{selOrg.orgname}}
+                </a>
+                <hr> -->
+                <a (click)="manageUsers()" *ngIf="role === 'Admin'">
+                    Manage Users
+               </a>
+                <hr>
+                <a>
+                    <mat-icon class="sidebar_icon">person</mat-icon> {{userName}}
+                </a>
+                <a (click)="updatePass()">
+                    <mat-icon class="sidebar_icon">lock</mat-icon> Change Password
+                </a>
+                <a (click)="logOut()">
+                    <mat-icon class="sidebar_icon">logout</mat-icon> Logout
+                </a>
+
+            </div>
+
+        </nav>
+        <label for="menu-opener" class="MenuOverlay"></label>
+    </aside>
+</div>

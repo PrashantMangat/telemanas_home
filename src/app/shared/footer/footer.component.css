@@ -1,0 +1,99 @@
+/* footer */
+
+.page-footer {
+    width: 100%;
+    position: relative;
+    display: block;
+    background-image: url('/assets/img/Footer/deskfooterbackimg.svg');
+    color: #000;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-size: cover;
+}
+
+
+/* marque */
+
+.row {
+    margin-right: 0px !important;
+}
+
+.rowmarque {
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top: 10px;
+}
+
+.marqueImag {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.mobpage-footer {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    /* .mobfootertext{
+        font-size: 12px;
+    } */
+    .marqueImag {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .page-footer {
+        display: none;
+    }
+    .mobpage-footer {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+        display: block;
+        background-image: url('/assets/img/Footer/mobfooterbackimg.svg');
+        color: #000;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-size: cover;
+    }
+}
+
+.deskfootertext {
+    /* font-size: 14px; */
+    font-family: 'Rubik';
+    font-weight: 500;
+}
+
+.moblogofootertext {
+    font-family: 'Rubik';
+    font-weight: larger;
+}
+
+.hrline {
+    height: .03em;
+    border: none;
+    color: #333;
+    background-color: #333;
+    width: 70%;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+
+.mobhrline {
+    height: .03em;
+    border: none;
+    color: #333;
+    background-color: #333;
+    width: 92%;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    margin-left: 25px;
+}
+
+.footerhr {
+    height: .03em;
+    border: none;
+    color: #000;
+    background-color: #000;
+    margin-top: -5px;
+    width: 90%;
+}

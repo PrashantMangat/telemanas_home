@@ -1,0 +1,186 @@
+
+
+<div [ngClass]="fontSize" class="jumbotron doNotPrint">
+    <div class="mt-2 mh-1 ml-2">
+        <div class="row">
+            <div class="col-2 leftheadinglogo">
+                <a routerLink="home">
+                    <img class="brand" src="assets/img/header/combinedlogo.svg" alt="Ministry of Health and Family Welfare">
+                </a>
+            </div>
+            <div routerLink="home" class="col-8 text-center">
+                <img style="vertical-align:middle" class="headingimg" src="assets/img/header/heading.svg" alt="National Tele Mental Health Program of India">
+                <img style="vertical-align:middle" class="mobbtext" src="assets/img/header/National.svg">
+            </div>
+        </div>
+    </div>
+    <ul [ngClass]="fontSize" class="nav navBarone text-center">
+        <li class="nav-item">
+            <a class="nav-item" [matMenuTriggerFor]="A">
+                <img style="vertical-align:middle" class="" src="assets/img/header/Atext.svg" alt="Accessability of AA">
+            </a>
+            <mat-menu #A="matMenu" yPosition="below" class="menu_container_1 printform">
+                <a (click)="toggle('sm')" mat-menu-item>A-</a>
+                <a (click)="toggle('mm')" mat-menu-item>A</a>
+                <a (click)="toggle('md')" mat-menu-item>A+</a>
+            </mat-menu>
+        </li>
+        <li class="nav-item-lan">|</li>
+        <li class="nav-item">
+            <a class="nav-item" [matMenuTriggerFor]="B">
+                <img style="vertical-align:middle" src="assets/img/header/accessibility.svg" alt="Accessability">
+            </a>
+            <mat-menu #B="matMenu" yPosition="below" class="menu_container_0 printform">
+                <a (click)="routeScreen()" mat-menu-item><img style="vertical-align:middle" src="assets/img/header/ScreenReader.svg" alt="screen Reader"> Screen Reader</a>
+            </mat-menu>
+        </li>
+        <li class="nav-item-lan">|</li>
+        <li class="nav-item-lan">
+            <mat-select placeholder="language" [(value)]="selected" style="width: 90px;" (selectionChange)="useLanguage($event.value)">
+                <mat-option value="en">English</mat-option>
+                <mat-option value="hn">Hindi</mat-option>
+            </mat-select>
+        </li>
+    </ul>
+
+    <ul [ngClass]="fontSize" class="navnew desk_view shadow-sm  rounded">
+        <a (click)="route()" href="{{baseUrl + '/#/home'}}">
+            <li class="common_text mt-2">{{'welcome.home' | translate }}</li>
+        </a>
+        <!-- <a (click)="route()" href="{{baseUrl + '/#/about'}}">
+            <li class="common_text mt-2">{{'teleheader.aboutus' | translate }}</li>
+        </a> -->
+        <a [matMenuTriggerFor]="UseDesk">
+            <li class="common_text mt-2">{{'teleheader.aboutus' | translate }}<mat-icon class="arrowdown">keyboard_arrow_down</mat-icon></li>
+        </a>
+        <mat-menu #UseDesk="matMenu" yPosition="below">
+            <div id="desktopmenu">
+            <ul class="navigation mt-2">
+                <a class="nav-item" href="{{baseUrl + '/#/about'}}" (click)="route()">{{'aboutUs.AboutTeleMANAS' | translate}}</a>
+                <hr class="hrclass">
+                    <a (click)="route()" href="{{baseUrl + '/#/aim&objectives'}}" class="nav-item">{{'aboutUs.AimObjectives' | translate}}</a>
+                <hr class="hrclass">
+               <a (click)="route()" href="{{baseUrl + '/#/bgrationale'}}" class="nav-item">{{'aboutUs.BackgroundRationale' | translate}}</a>
+                <hr class="hrclass">
+               <a (click)="route()" href="{{baseUrl + '/#/orgstructure'}}" class="nav-item">{{'aboutUs.OrganizationalStructure' |
+                        translate}}</a>
+            </ul>
+        </div>
+        </mat-menu>
+        <a routerLink="" routerLinkActive="active">
+            <li class="common_text mt-2 act1">{{'welcome.dashboard' | translate }}</li>
+        </a>
+        <a (click)="route()" href="{{baseUrl + '/#/UsefulLinks'}}">
+            <li class="common_text mt-2">{{'teleheader.Resources' | translate }}</li>
+        </a>
+        <a (click)="route()" href="{{baseUrl + '/#/contactus'}}">
+            <li class="common_text mt-2">{{'welcome.contactUs' | translate }}</li>
+        </a>
+        <a #tooltip="matTooltip" matTooltip='Information Education and Communication' matTooltipPosition="below" aria-tooltip="Button that displays and hides a tooltip triggered by other buttons" [matMenuTriggerFor]="UseDesk1">
+            <li class="common_text mt-2">IEC Material<mat-icon class="arrowdown">keyboard_arrow_down</mat-icon></li>
+        </a>
+        <mat-menu #UseDesk1="matMenu" yPosition="below">
+            <div id="desktopmenu">
+            <ul class="navigation mt-2">
+                <a class="nav-item" href="{{baseUrl + '/#/about'}}" (click)="route()">{{'welcome.pm' | translate}}</a>
+                <hr class="hrclass">
+                    <a (click)="route()" href="{{baseUrl + '/#/aim&objectives'}}" class="nav-item">{{'welcome.Newsletter' | translate}}</a>
+            </ul>
+        </div>
+        </mat-menu>
+        <li class="faq">
+            <a class="text-white" href="{{baseUrl + '/#/faq'}}">
+                <mat-icon class="sidebar_icon1">help</mat-icon>
+                {{'teleheader.faq' | translate }}
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!-- Mobile View Comp. -->
+<div class="mobview mobjumbotron">
+    <div class="mobheadingview">
+        <div routerLink="/home" class="headerimg">
+            <img src="assets/img/header/headerlog.svg" width="75px" height="35px" alt="Ministry of Health and Family Welfare">
+        </div>
+        <div routerLink="/home" class="headerimg mobbtext" style="margin-left: 15px; width: 52%;">
+            <img src="assets/img/header/National.svg" class="mobbtext mobbtext1" alt="text for National TeleMANAS">
+        </div>
+        <div routerLink="home" class="desktext" style="margin-left: 25px; width: 52%;">
+            <img style="vertical-align:middle" class="desktext mt-2" src="assets/img/header/heading.svg" alt="National Tele Mental Health Program of India">
+        </div>
+        <div routerLink="/home" class="headerimg" style="margin-left: 24px; margin-bottom: 5px;">
+            <img src="assets/img/header/nhmlogo.svg" height="40px" width="50px" alt="National Health Mission">
+        </div>
+    </div>
+    <nav style="background-color:  #CFDFEC;" class="navbar ">
+        <button style="margin-left: -20px;" mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon style="color: #E98037;">menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" class="mobnavhead">
+            <a class="common_text4" (click)="route()" href="{{baseUrl + '/#/home'}}" routerLinkActive="active" mat-menu-item>{{'teleheader.home' | translate }}</a>
+            <a class="common_text4" (click)="route()" [matMenuTriggerFor]="Use" mat-menu-item>{{'teleheader.aboutus' | translate }}</a>
+            <mat-menu #Use="matMenu" class="menu_container_2">
+                <a class="nav-item" href="{{baseUrl + '/#/about'}}" (click)="route()">{{'aboutUs.AboutTeleMANAS' | translate}}</a>
+                <hr class="hrclass">
+                    <a (click)="route()" href="{{baseUrl + '/#/aim&objectives'}}" class="nav-item">{{'aboutUs.AimObjectives' | translate}}</a>
+                <hr class="hrclass">
+               <a (click)="route()" href="{{baseUrl + '/#/bgrationale'}}" class="nav-item">{{'aboutUs.BackgroundRationale' | translate}}</a>
+                <hr class="hrclass">
+               <a (click)="route()" href="{{baseUrl + '/#/orgstructure'}}" class="nav-item">{{'aboutUs.OrganizationalStructure' |
+                        translate}}</a>
+            </mat-menu>
+            <a class="common_text4" href="#" routerLinkActive="active" mat-menu-item>{{'teleheader.Dashboard' |
+                translate }}</a>
+            <a class="common_text4" (click)="route()" href="{{baseUrl + '/#/UsefulLinks'}}" routerLinkActive="active" mat-menu-item>{{'teleheader.Resources' | translate }}</a>
+            <a class="common_text4" (click)="route()" href="{{baseUrl + '/#/contactus'}}" routerLinkActive="active" mat-menu-item>{{'teleheader.contactUs' | translate }}</a>
+            <a class="common_text4" #tooltip="matTooltip" matTooltip='Information Education and Communication' matTooltipPosition="below" aria-tooltip="Button that displays and hides a tooltip triggered by other buttons" (click)="route()" [matMenuTriggerFor]="Use1" mat-menu-item>IEC Material</a>
+            <mat-menu #Use1="matMenu" class="menu_container_2">
+                <a class="nav-item" href="{{baseUrl + '/#/about'}}" (click)="route()">{{'welcome.pm' | translate}}</a>
+                <hr class="hrclass">
+                    <a (click)="route()" href="{{baseUrl + '/#/aim&objectives'}}" class="nav-item">{{'welcome.Newsletter' | translate}}</a>
+            </mat-menu>
+            <a class="text-white mobfaq" href="{{baseUrl + '/#/faq'}}" mat-menu-item>
+                <mat-icon class="sidebar_icon1">help</mat-icon>
+                {{'teleheader.faq' | translate }}
+            </a>
+        </mat-menu>
+
+        <ul [ngClass]="fontSize" class="nav navmobtwo text-center">
+            <li class="mobnav-item">
+                <a class="mobnav-item" [matMenuTriggerFor]="A">
+                    <img style="vertical-align:middle" class="" src="assets/img/header/Atext.svg" alt="Accessability of AA">
+                </a>
+                <mat-menu #A="matMenu" yPosition="below" class="menu_container_1 printform">
+                    <a style="color: #000;" (click)="toggle('sm')" mat-menu-item>A-</a>
+                    <a style="color: #000;" (click)="toggle('mm')" mat-menu-item>A</a>
+                    <a style="color: #000;" (click)="toggle('md')" mat-menu-item>A+</a>
+                </mat-menu>
+            </li>
+            <li class="mobnav-item-lan">|</li>
+            <li class="mobnav-item">
+                <a class="mobnav-item" [matMenuTriggerFor]="accessibility">
+                    <img style="vertical-align:middle" class="" src="assets/img/header/accessibility.svg" alt="Accessability">
+                </a>
+                <mat-menu #accessibility="matMenu" yPosition="below" class="menu_container_0 printform">
+                    <!-- <a mat-menu-item><img style="vertical-align:middle" class="" src="assets/img/header/ScreenContrast.svg" alt="screen contrast"> Screen Contrast</a> -->
+                    <a (click)="routeScreen()" mat-menu-item><img style="vertical-align:middle" class="" src="assets/img/header/ScreenReader.svg" alt="screen Reader"> Screen Reader</a>
+                    <!-- <a mat-menu-item><img style="vertical-align:middle" class="" src="assets/img/header/SiteMap.svg" alt="sitemap"> Sitemap</a> -->
+                </mat-menu>
+            </li>
+            <li class="mobnav-item-lan">|</li>
+            <li class="mobnav-item-lan">
+                <mat-select placeholder="language" [(value)]="selected" style="width: 80px;" (selectionChange)="useLanguage($event.value)">
+                    <mat-option value="en">English</mat-option>
+                    <mat-option value="hn">Hindi</mat-option>
+                </mat-select>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div app-theme [ngClass]="fontSize" class="container-app">
+    <router-outlet></router-outlet>
+</div>
+
+<app-footer [ngClass]="fontSize"></app-footer>

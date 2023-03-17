@@ -1,0 +1,76 @@
+<app-header></app-header>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+    <p style="color: white; font-size: 16px;">Loading... please wait</p>
+</ngx-spinner>
+
+<div class="container mt-6">
+    <div class="row mt-3">
+        <div class="col-md-6 offset-md-3">
+            <mat-card>
+                <mat-card-content>
+                    <h2 class="headings text-center">Generate Reports</h2>
+                    <hr>
+                    <form #genReport="ngForm">
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                            <mat-radio-group aria-label="Select an option" [(ngModel)]="selectType" name="select">
+                                <mat-radio-button value="district">District-Wise</mat-radio-button>
+                                <mat-radio-button value="state">State-Consolidated</mat-radio-button>
+                                <mat-radio-button value="hospital">Hospital-Wise</mat-radio-button>
+
+                            </mat-radio-group>
+                            </div>
+                        </div>
+                        <div class="row mt-3" *ngIf="selectType === 'state'">
+
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>From Date</mat-label>
+                                    <input [(ngModel)]="fromDate" (focus)="fromPicker5.open()" [max]="today" name="fromDate" required matInput [matDatepicker]="fromPicker5" placeholder="From Date" readonly>
+                                    <mat-datepicker-toggle matSuffix [for]="fromPicker5"></mat-datepicker-toggle>
+                                    <mat-datepicker #fromPicker5></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>To Date</mat-label>
+                                    <input [(ngModel)]="toDate" (focus)="toPicker5.open()" [min]="fromDate" [max]="today" name="toDate" required matInput [matDatepicker]="toPicker5" placeholder="To Date" readonly>
+                                    <mat-datepicker-toggle matSuffix [for]="toPicker5"></mat-datepicker-toggle>
+                                    <mat-datepicker #toPicker5></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row mt-3" *ngIf="selectType === 'district'">
+                            <div class="col-md-12">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Report Date</mat-label>
+                                <input [(ngModel)]="distDate" (focus)="districtPicker.open()" [max]="today" name="distDate" required matInput [matDatepicker]="districtPicker" placeholder="Report Date" readonly>
+                                <mat-datepicker-toggle matSuffix [for]="districtPicker"></mat-datepicker-toggle>
+                                <mat-datepicker #districtPicker></mat-datepicker>
+                            </mat-form-field>    
+                        </div>                   
+                         </div>
+                         <div class="row mt-3" *ngIf="selectType === 'hospital'">
+                            <div class="col-md-12">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Report Date</mat-label>
+                                <input [(ngModel)]="orgDate" (focus)="orgPicker.open()" [max]="today" name="orgDate" required matInput [matDatepicker]="orgPicker" placeholder="Report Date" readonly>
+                                <mat-datepicker-toggle matSuffix [for]="orgPicker"></mat-datepicker-toggle>
+                                <mat-datepicker #orgPicker></mat-datepicker>
+                            </mat-form-field>    
+                        </div>                   
+                         </div>
+                    </form>
+
+                </mat-card-content>
+            </mat-card>
+            <div class="text-center m-3">
+                <button mat-raised-button class="btn mr-2 btn-secondary" (click)="goToDashboard()">Cancel</button>
+                <button *ngIf="selectType === 'state'" mat-raised-button class="btn btn-primary" [disabled]="genReport.invalid" (click)="downloadReport()">Download</button>
+                <button *ngIf="selectType === 'district'" mat-raised-button class="btn btn-primary" [disabled]="genReport.invalid" (click)="distReport()">Download</button>
+                <button *ngIf="selectType === 'hospital'" mat-raised-button class="btn btn-primary" [disabled]="genReport.invalid" (click)="orgReport()">Download</button>
+
+            </div>
+        </div>
+    </div>
+</div>

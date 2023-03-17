@@ -1,0 +1,318 @@
+.btn-group button {
+    background-color: #ecf4f1; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: black; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    width: 40%; /* Set a width if needed */
+    display: block; /* Make the buttons appear below each other */
+  }
+  
+  .btn-group button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+  }
+  
+  /* Add a background color on hover */
+  .btn-group button:hover {
+    background-color: #3e8e41;
+  }
+
+  .wd53{
+    width:45%;
+  }
+
+
+/* desktop start */
+@media only screen and (min-width:580px) {
+
+  .ht68{
+    height:68px;
+  }
+  .mobile{
+    display: none;
+  }
+  .card {
+      width: 100%;
+  }
+
+  .ml10{
+    margin-left:10%;
+  }
+:host .mat-button-toggle-group{
+border-radius: 10px !important;
+font-family: 'Rubik';
+font-style:'normal';
+font-weight: 400;
+font-size: 18px;
+color: #000000;
+margin:5px;
+border:1px solid black;
+height:45px;
+
+
+
+}
+
+:host .mat-button-toggle-group-appearance-standard .mat-button-toggle+.mat-button-toggle {
+border-left:none;
+line-height: 0;
+}
+::ng-deep  .mat-select-value{    
+color:black;
+}
+
+::ng-deep .mat-select-placeholder {
+  color:black;
+  height:unset;
+  white-space: normal;
+}
+::ng-deep .mat-option{
+color:black;
+
+}
+
+.mat-card{
+  /* box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%); */
+  box-shadow: 1px 5px 2px -2px rgb(0 0 0 / 20%), 1px 5px 2px 1px rgb(0 0 0 / 14%);
+  
+  }
+  
+  
+  .mat-button-toggle {
+  background-color:  white;
+  /* color: rgba(0,0,0,.54); */
+  color:black;
+  /* border-radius: 10px; */
+  padding-right:16px;
+  padding-left:16px;
+  /* border: 1px solid black; */
+  
+  
+  
+  }
+  
+  .toggle1  .mat-button-toggle {
+  background-color:  white;
+  /* color: rgba(0,0,0,.54); */
+  color:black;
+  /* border-radius: 10px; */
+  /* width:150px; */
+  /* border: 1px solid black; */
+  
+  }
+  
+  
+  .toggle1 .mat-button-toggle-checked {
+    
+    background-color:#295583;
+  /* color: rgba(0,0,0,.54); */
+  color:white;
+  /* width:150px; */
+  outline: none;
+  border-radius: 10px;
+  
+  
+  
+  
+  }
+  
+  
+  .mat-button-toggle-checked {
+  background-color:#295583;
+  color:white;;
+  padding-right:35px;
+  padding-left:35px;
+  outline: none;
+  border-radius: 10px;
+  }
+
+::ng-deep  .mat-option-text.mat-option-text {
+  white-space: normal;
+}
+
+::ng-deep .mat-button-toggle-appearance-standard .mat-button-toggle-label-content{
+  line-height: 0px !important;
+  outline:none;
+}
+
+
+::ng-deep .mat-button-toggle-button:focus {
+  outline: none;
+  height:38px;
+}
+
+
+::ng-deep .mat-button-toggle-group .mtt_10{
+  margin-top:-10px;
+}
+}
+
+
+/* desktop end */
+
+/* mobile start */
+@media (max-width: 576px) {
+
+  .desktop{
+    display: none;
+  }
+
+
+
+:host .mat-button-toggle-group{
+border-radius: 10px !important;
+font-family: 'Rubik';
+font-style:'normal';
+font-weight: 300;
+font-size: 12px;
+color: #000000;
+/* margin:5px; */
+border:1px solid black;
+height:40px;
+
+
+
+}
+
+:host .mat-button-toggle-group-appearance-standard .mat-button-toggle+.mat-button-toggle {
+border-left:none;
+line-height: 0;
+}
+::ng-deep  .mat-select-value{    
+color:black;
+}
+
+::ng-deep .mat-select-placeholder {
+  color:black;
+  height:unset;
+  white-space: normal;
+}
+::ng-deep .mat-option{
+color:black;
+
+}
+
+.mat-card{
+/* box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%); */
+box-shadow: 1px 5px 2px -2px rgb(0 0 0 / 20%), 1px 5px 2px 1px rgb(0 0 0 / 14%);
+
+}
+
+
+.mat-button-toggle {
+background-color:  white;
+/* color: rgba(0,0,0,.54); */
+color:black;
+/* border-radius: 10px; */
+/* padding-right:15px;
+padding-left:15px; */
+/* border: 1px solid black; */
+
+
+
+}
+
+.toggle1  .mat-button-toggle {
+background-color:  white;
+/* color: rgba(0,0,0,.54); */
+color:black;
+/* border-radius: 10px; */
+/* width:150px; */
+/* border: 1px solid black; */
+
+}
+
+
+.toggle1 .mat-button-toggle-checked {
+  
+  background-color:#295583;
+/* color: rgba(0,0,0,.54); */
+color:white;
+/* width:150px; */
+outline: none;
+border-radius: 10px;
+
+
+
+
+}
+
+
+.mat-button-toggle-checked {
+background-color:#295583;
+color:white;;
+padding-right:15px;
+padding-left:15px;
+outline: none;
+border-radius: 10px;
+}
+
+::ng-deep .mat-select-panel mat-option.mat-option {
+    height: unset;
+  }
+
+::ng-deep  .mat-option-text.mat-option-text {
+  white-space: normal;
+}
+
+
+
+::ng-deep .mat-button-toggle-appearance-standard .mat-button-toggle-label-content{
+  line-height: 0px !important;
+  outline:none;
+}
+
+
+
+::ng-deep .mat-select-arrow {
+  border-left: 20px solid transparent !important;
+  border-right: none !important;
+  border-top: 10px solid transparent !important;
+  border-image-source: url('/assets/img/arrow2.png');
+
+}
+
+
+
+
+::ng-deep .mat-button-toggle-button:focus {
+  outline: none;
+  height:38px;
+}
+
+::ng-deep .mat-button-toggle-group .mtt_10{
+  margin-top:-10px;
+}
+
+  
+}
+
+/* mobile end */
+
+          .div1{
+            text-align: center;
+            border-radius: 10px;
+            border:1px solid #295583;
+            margin-top: 0px;
+            margin-left:9%;
+          }
+
+          .mat-card{
+            box-shadow: none;
+          }
+          .br10{
+            border-radius: 10px;
+          }
+
+          .wd88{
+            width: 88%;
+          }
+         .wd95{
+          width: 95%;;
+         }
+          .wd100{
+            width: 100%;
+          }
+          .ml15{
+            margin-left: 15px;;
+          }
