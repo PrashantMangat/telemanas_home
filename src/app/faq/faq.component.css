@@ -1,0 +1,24 @@
+@media (max-width: 576px) {
+    .card {
+        padding: 0 !important;
+        background-color: none !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card {
+        padding-bottom: 50px;
+        padding-top: 50px;
+    }
+    .faqcard {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+.common_heading_faq {
+    color: #000;
+    font-weight: 600;
+}

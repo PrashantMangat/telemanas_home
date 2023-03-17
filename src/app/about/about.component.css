@@ -1,0 +1,147 @@
+    /* page section header */
+    
+    img {
+        width: 100%;
+    }
+    
+    .headingimg {
+        /* display: block !important;
+        margin-left: 120px;
+        justify-content: center;
+        align-items: center; */
+    }
+    
+    .headingimgmob {
+        display: none;
+    }
+    /*------------Mobile Compatibility-----------*/
+    /* New CSS added */
+    
+    #tooplate_main {
+        padding-right: 14px;
+    }
+    
+    #footer a {
+        color: #000;
+    }
+    
+    .panelhome {
+        padding-top: 70px;
+    }
+    
+    #content {
+        float: right;
+        width: 80%;
+    }
+    
+    .scrollContainer div.panel {
+        overflow: hidden;
+    }
+    
+    ul.navigation li {
+        display: inline;
+        margin: 0;
+        padding: 0;
+    }
+    
+    ul.navigation a {
+        padding-top: 8px;
+        padding-bottom: 7px;
+        display: block;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 16px;
+        font-weight: 1000;
+        ;
+    }
+    
+    ul.navigation a:hover {
+        color: #1c1c1a;
+        font-size: 18px;
+        transition: all .2s ease;
+    }
+    
+    ul.navigation a:focus {
+        outline: none;
+    }
+    
+    .HeadingContent {
+        justify-content: center;
+        display: flex;
+        font-weight: bolder;
+        font-size: 24px;
+    }
+    
+    .hrdash {
+        border-top: 1px dashed;
+    }
+    
+    @media only screen and (max-width:576px) {
+        .panelhome {
+            padding-top: 170px
+        }
+        /* .headingimgmob {
+            display: block !important;
+        }
+        .headingimg {
+            display: none !important;
+        } */
+        .page-section {
+            margin-top: 90px;
+            margin-left: -20px;
+        }
+        .navigation1 {
+            display: none;
+        }
+        #content {
+            float: right;
+            width: 90%;
+        }
+        .mobtextaboutus {
+            margin-top: -110px;
+        }
+        .HeadingContent {
+            justify-content: center;
+            display: flex;
+            font-weight: bolder;
+            font-size: 20px;
+        }
+    }
+    
+    @media only screen and (min-width:577px) and (max-width:768px) {
+        #content {
+            float: right;
+            width: 97%;
+        }
+    }
+    
+    @media only screen and (min-width:769px) and (max-width:992px) {
+        #content {
+            float: right;
+            width: 97%;
+        }
+    }
+    
+    @media only screen and (min-width:993px) and (max-width:1200px) {
+        #content {
+            float: right;
+            width: 97%;
+        }
+    }
+    
+    @media only screen and (min-width:1201px) {
+        .mobtextaboutus {
+            margin-top: -40px;
+            display: inherit;
+        }
+        #content {
+            float: right;
+            width: 97%;
+            margin-top: 70px;
+        }
+        .HeadingContent {
+            justify-content: center;
+            display: flex;
+            font-weight: bolder;
+            font-size: 24px;
+        }
+    }

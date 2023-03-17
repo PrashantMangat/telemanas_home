@@ -1,0 +1,32 @@
+@media only screen and (max-width:576px) {
+    .content {
+        overflow-x: hidden;
+        display: flex;
+    }
+    .img3 {
+        margin-left: 2px;
+    }
+    .img4 {
+        margin-left: 4px;
+    }
+    .mobuse {
+        margin-left: 170px;
+        margin-top: -40px;
+    }
+    .mobuse1 {
+        padding-left: 190px;
+        margin-top: -43px;
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    br {
+        display: none;
+    }
+    .mobuse1 {
+        margin-top: 10px;
+    }
+    .mobuse {
+        padding-top: 15px;
+    }
+}

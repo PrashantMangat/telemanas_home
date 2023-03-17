@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatMenuTrigger } from '@angular/material';
+import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/environments/environment';
+import { ConnectionService } from 'ng-connection-service';
 import { MatSnackBar } from '@angular/material';
-import { AuthService } from '../auth/auth.service';
-import { GeneralService } from '../general.service';
+import { Router } from '@angular/router';
+import { VersionCheckService } from '../version-check.service';
+
 
 @Component({
   selector: 'app-header',
@@ -10,58 +14,88 @@ import { GeneralService } from '../general.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  userName: string;
-  role: string;
-  orgArr = [];
-  // selOrg;
-  external;
+  baseUrl = environment.cors;
+  navbar: any;
+  sticky: any;
+  // window: any;
+  text: any;
+  count: any;
+  versionUrl = environment.versionUrl;
+  title = 'patient-portal';
+  status = 'ONLINE';
+  fontSize = 'mm';
+  isConnected = true;
+  pgNotAvail: boolean;
 
-  constructor(private router: Router, private gs: GeneralService, private snackBar: MatSnackBar, private authService: AuthService) { }
+  userName: any;
+  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
-  ngOnInit() {
-    this.external = sessionStorage.getItem('external');
-    this.userName = sessionStorage.getItem('userName');
-    this.role = sessionStorage.getItem('role');
-    // this.getUserOrg();
-  }
-  // getUserOrg() {
-  //   this.gs.getUserOrg(this.userId).subscribe(response => {
-  //     this.orgArr = response;
-  //     this.selectMHE(this.orgArr[0]);
-  //   });
-  // }
-  // selectMHE(org) {
-  //   this.selOrg = org;
-  //   // sessionStorage.setItem('selectedOrg', JSON.stringify(org));
-  // }
-  logOut() {
-    this.authService.logout().subscribe(response => {
-      localStorage.clear();
-      sessionStorage.clear();
-      this.router.navigate(['login']);
-    }, (error) => {
-        this.snackBar.open(error.json().message, 'x', {
-        duration: 5000,
-      });
-      localStorage.clear();
-      sessionStorage.clear();
-        this.router.navigate(['login']);
+  constructor(private versionCheck: VersionCheckService, private connectionService: ConnectionService, private snackBar: MatSnackBar,
+    private translate: TranslateService, private router: Router,) {
+    this.getdate();
+     
+    // language options
+    const pgNotAvail = false;
+    translate.addLangs(['en', 'hn', 'ka']);
+    translate.setDefaultLang('en');
+    versionCheck.initVersionCheck(this.versionUrl);
+    this.connectionService.monitor().subscribe(isConnected => {
+      this.isConnected = isConnected;
+      if (this.isConnected) {
+        this.status = 'ONLINE';
+        this.snackBar.open('You are Online Now', 'x', {
+          duration: 5000,
+          panelClass: ['green-snackbar']
+        });
+      } else {
+        this.snackBar.open('You are OFFLINE, Please Check your internet connection', 'x', {
+          duration: 15000,
+          panelClass: ['warning']
+        });
+        this.status = 'OFFLINE';
+        alert('You are Offline, Please check your internet connection');
+      }
     });
   }
-  policy() {
-    this.router.navigate(['policy']);
+
+  openNav() {
+    document.getElementById('mySidenav').style.width = '250px';
   }
-  dashboard() {
-    if(this.role === 'Admin'){
-      this.router.navigate(['adminDashboard']);
 
+  closeNav() {
+    document.getElementById('mySidenav').style.width = '0';
+  }
+
+  toggle(size) {
+    this.fontSize = size;
+  }
+
+  route() {
+    sessionStorage.setItem('validRoute', 'true');
+  }
+
+  useLanguage(language: string) {
+    this.translate.use(language);
+  }
+
+  home(home: string) {
+    this.translate.use(home);
+  }
+
+  getdate() {
+    this.text = document.lastModified;
+  }
+  getstickynav(){
+    if (window.pageYOffset >= this.sticky) {
+      this.navbar.classList.add("sticky")
     } else {
-      this.router.navigate(['home']);
-
+      this.navbar.classList.remove("sticky");
     }
   }
-
-  updatePass() {
-    this.router.navigate(['updatePass']);
+  ngOnInit() {
+    this.navbar = document.getElementById("navbar");
+    this.sticky = this.navbar.offsetTop;
   }
 }
+
+

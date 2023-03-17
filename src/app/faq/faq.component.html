@@ -1,0 +1,24 @@
+<div class="container mt-3" style="margin-bottom: 2rem;">
+    <nav class="">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/#/home">{{'teleheader.home' | translate}}</a></li>
+            <mat-icon>chevron_right</mat-icon>
+            <li class="breadcrumb-item"><strong>{{'teleheader.faq' | translate}}</strong></li>
+        </ol>
+    </nav>
+    <hr class="headerhrline">
+    <div class="common_heading_faq text-center">{{'faq1.FAQs' | translate }}</div>
+
+    <div class="card mt-3">
+        <div class="faqcard" [ngClass]="fontSize" *ngFor="let faq of Faq"><b>{{ faq.question }}</b> <br>
+            <div class="mt-1" [ngClass]="fontSize">
+                {{ faq.answer }}
+            </div>
+            <hr>
+        </div>
+    </div>
+
+    <div class="col-12 mt-3 text-center mobbtn">
+        <p routerLink="/home" class="btn1">{{'Common.GoBack' | translate }}</p>
+    </div>
+</div>

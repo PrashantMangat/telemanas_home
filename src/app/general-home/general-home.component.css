@@ -1,0 +1,606 @@
+/* Tab View */
+
+@media only screen and (min-width: 568px) and (max-width: 1199px) {
+    .tabnewsrow {
+        display: flex;
+        width: 102%;
+        position: relative;
+        padding-left: 59px;
+        background-color: rgba(231, 240, 239, 1);
+        color: #000;
+    }
+    .btn1,
+    p {
+        display: inline-table;
+    }
+    .mobnewsrow {
+        display: none;
+    }
+    .showdiv {
+        justify-content: right;
+        display: flex;
+        margin-top: 10px;
+    }
+    .mobrow {
+        flex-wrap: inherit !important;
+        margin-top: 10px;
+        background: white;
+        box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.3);
+    }
+    .mobrow1 {
+        flex-wrap: inherit !important;
+        padding-left: 40px;
+        width: 98%;
+    }
+    .deskView {
+        display: none;
+    }
+    .test {
+        display: none;
+    }
+    .slides {
+        padding: 0;
+        width: 100%;
+        height: 430px;
+        display: block;
+        position: relative;
+    }
+    .slide {
+        top: 0;
+        opacity: 0;
+        width: 100%;
+        height: 410px;
+        display: block;
+        position: absolute;
+        transition: all .7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+    #inner1 {
+        float: left;
+    }
+    #inner2 {
+        float: left;
+        clear: left;
+    }
+    #inner3 {
+        float: left;
+        clear: left;
+    }
+    .mobphoneicon {
+        background: url("/assets/img/greenphoneicon.svg") no-repeat;
+        background-size: 45px;
+        animation-name: example;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        padding: 15px;
+        margin-right: 15px;
+    }
+    .newrow2 {
+        text-align: center;
+        width: 100%;
+    }
+    .newrow {
+        margin-top: 50px;
+        text-align: center;
+        width: 100%;
+        align-items: center;
+        background-color: rgba(231, 240, 239, 1);
+    }
+    .testMob {
+        align-items: center;
+        display: grid;
+        width: 100%;
+    }
+    .mobviewtext {
+        padding-left: 0px;
+    }
+    .deskviewtext {
+        display: none;
+    }
+    .mobpage-news {
+        width: 100%;
+        position: relative;
+        display: block;
+        padding-top: 10px;
+        padding-bottom: 16px;
+        background-color: rgba(231, 240, 239, 1);
+        color: #000;
+        margin-top: 30px;
+    }
+    .page-news {
+        display: none;
+    }
+}
+.datepublish{
+    padding-left: 10px
+}
+@media only screen and (min-width:993px) and (max-width:1200px) {
+    .datepublish{
+        padding-left: 220px;
+        justify-content: right;
+    }
+}
+/*---------------Home-Dropdown Section------------*/
+
+.test div,
+p {
+    display: inline;
+}
+
+.mobslide:hover+.mobnav label {
+    opacity: 0.5;
+}
+
+input:checked+.mobslide-container .mobslide {
+    opacity: 1;
+    transform: scale(1);
+    transition: left 0.65s ease-out;
+}
+
+input:checked+.mobslide-container .mobnav label {
+    display: block;
+}
+
+hr {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* new news */
+
+.page-news {
+    margin-top: 80px;
+}
+
+.phoneNumber {
+    font-weight: 600;
+    display: inline-block;
+    font-size: x-large;
+    padding: 15px;
+    padding-left: 55px;
+    padding-right: 55px;
+    border-radius: 145px;
+    color: #E98037;
+    box-shadow: 0px 15px 10px -15px #111;
+    background-color: #fff;
+    width: 44%;
+}
+
+.phoneNumber:hover {
+    background-color: #40914C;
+    color: #fff;
+}
+
+.phoneNumber2 {
+    display: inline-flex;
+    justify-content: center;
+    font-size: medium;
+    padding: 15px;
+    box-shadow: 0px 15px 10px -15px #111;
+    width: 100%;
+    border-radius: 145px;
+    color: #E98037;
+    background-color: #fff;
+}
+
+.phoneNumber1 {
+    font-size: x-large;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.slides {
+    padding: 0;
+    width: 100%;
+    height: 430px;
+    display: block;
+    position: relative;
+}
+
+.slides input {
+    display: none;
+}
+
+.slide-container {
+    display: block;
+}
+
+.slide {
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 410px;
+    display: block;
+    position: absolute;
+    transition: all .7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.imgdesk {
+    display: block;
+    margin-top: 20px;
+}
+
+.imgmob {
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+}
+
+.nav label {
+    width: 50px;
+    height: 100%;
+    display: none;
+    position: absolute;
+    z-index: 9;
+    cursor: pointer;
+    transition: opacity .2s;
+    color: #e98037;
+    font-size: 60pt;
+    text-align: center;
+    line-height: 380px;
+}
+
+.slide:hover+.nav label {
+    opacity: 0.5;
+}
+
+.nav label:hover {
+    opacity: 1;
+}
+
+.nav .next {
+    right: 0;
+}
+
+input:checked+.slide-container .slide {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 1s ease-in-out;
+}
+
+input:checked+.slide-container .nav label {
+    display: block;
+}
+
+.nav-dots {
+    width: 100%;
+    bottom: -11px;
+    height: 11px;
+    display: block;
+    position: absolute;
+    text-align: center;
+}
+
+.nav-dots .nav-dot {
+    top: -5px;
+    width: 11px;
+    height: 11px;
+    margin: 0 4px;
+    position: relative;
+    border-radius: 100%;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.nav-dots .nav-dot:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+input#img-1:checked~.nav-dots label#img-dot-1,
+input#img-2:checked~.nav-dots label#img-dot-2,
+input#img-3:checked~.nav-dots label#img-dot-3,
+input#img-4:checked~.nav-dots label#img-dot-4,
+input#img-5:checked~.nav-dots label#img-dot-5,
+input#img-6:checked~.nav-dots label#img-dot-6 {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+
+/* New home page css */
+
+.newstitle {
+    margin-bottom: 0px;
+    /* margin-top: 10px; */
+}
+
+.newstitle:hover {
+    cursor: pointer;
+}
+
+.divstyle {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.heading {
+    color: #000;
+}
+
+.showdiv {
+    justify-content: right;
+    display: flex;
+    margin-top: 10px;
+}
+
+.mobrow {
+    flex-wrap: inherit !important;
+    margin-top: 10px;
+    padding: 10px;
+    background: white;
+    box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.mobrow1 {
+    flex-wrap: inherit !important;
+    padding-left: 40px;
+    width: 98%;
+}
+
+.newrow {
+    background-color: rgba(231, 240, 239, 1);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    width: 70%;
+    padding: 25px;
+}
+
+.newrow2 {
+    background-color: rgba(64, 145, 76, 1);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 70%;
+    padding: 6px;
+    height: 1px;
+    padding-top: 0px;
+    overflow: hidden;
+}
+
+.page-news {
+    width: 100%;
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 40px;
+    padding-right: 100px;
+    padding-left: 100px;
+    background-color: rgba(231, 240, 239, 1);
+    color: #000;
+}
+
+@keyframes example {
+    from {
+        background: url("/assets/img/greenphoneicon.svg") no-repeat;
+        background-size: 30px;
+    }
+    to {
+        background: url("/assets/img/orangephoneicon.svg") no-repeat;
+        background-size: 30px;
+    }
+}
+
+@keyframes example1 {
+    from {
+        background: url("/assets/img/greenphoneicon.svg") no-repeat;
+        background-size: 30px;
+    }
+    to {
+        background: url("/assets/img/orangephoneicon.svg") no-repeat;
+        background-size: 30px;
+    }
+}
+
+  
+@media (max-width: 576px) {
+    /* ::ng-deep .mat-select-panel mat-option.mat-option {
+        font-size:14px;
+      } */
+    .mobnewsrow {
+        display: flex;
+        padding-top: 10px;
+        padding: 10px !important;
+    }
+    .tabnewsrow {
+        display: none;
+    }
+    .imgmob {
+        display: block !important;
+    }
+    .imgdesk {
+        display: none !important;
+    }
+    .nav label {
+        line-height: 500px;
+    }
+    .slides {
+        padding: 0;
+        display: block;
+        position: relative;
+        margin-top: 0px !important;
+        width: 100%;
+        height: 446px !important;
+    }
+    .slide {
+        top: 0;
+        opacity: 0;
+        width: 100%;
+        height: 380px !important;
+        display: block;
+        position: absolute;
+        transition: all .7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        margin-top: 100px
+    }
+    .deskView {
+        display: none;
+    }
+    #inner1 {
+        float: left;
+    }
+    #inner2 {
+        float: left;
+        clear: left;
+    }
+    #inner3 {
+        float: left;
+        clear: left;
+    }
+    .mobphoneicon {
+        background: url("/assets/img/greenphoneicon.svg") no-repeat;
+        background-size: 45px;
+        animation-name: example;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        padding: 15px;
+        margin-right: 15px;
+    }
+    .newrow2 {
+        text-align: center;
+        width: 100%;
+    }
+    .newrow {
+        margin-top: 50px;
+        text-align: center;
+        width: 100%;
+        align-items: center;
+        background-color: rgba(231, 240, 239, 1);
+    }
+    .testMob {
+        align-items: center;
+        display: grid;
+        width: 100%;
+    }
+    .mobviewtext {
+        padding-left: 0px;
+    }
+    .deskviewtext {
+        display: none;
+    }
+    .mobpage-news {
+        width: 100%;
+        position: relative;
+        display: block;
+        padding-top: 10px;
+        padding-bottom: 16px;
+        background-color: rgba(231, 240, 239, 1);
+        color: #000;
+        margin-top: 30px;
+    }
+    .page-news {
+        display: none;
+    }
+    .nav-dots {
+        width: 100%;
+        bottom: -45px;
+        height: 11px;
+        display: block;
+        position: absolute;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    ::ng-deep .mat-select-panel mat-option.mat-option {
+        height: unset;
+        font-size:16px;
+      }
+      ::ng-deep .mat-option-text.mat-option-text {
+        white-space: normal;
+        color: black;
+      }
+      ::ng-deep .mat-select-value {
+        color: black;
+        font-size: 16px;
+        font-size: 1.1vw;
+      }
+    
+      ::ng-deep .mat-select-placeholder {
+        color: black;
+        height: unset;
+        font-size: 16px;
+        font-size: 1.1vw;
+    
+      }
+    /* .mat-option{
+        width: 170px;
+        margin-left: 30px;
+    } */
+    .phoneicon {
+        width: 50px;
+        height: 50px;
+        background: url("/assets/img/phonecallicon.svg") no-repeat;
+        background-size: 40px;
+        animation-name: example1;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+    }
+    .tabnewsrow {
+        display: none;
+    }
+    .mobphoneNumber1 {
+        display: none;
+    }
+    .mobviewtext {
+        display: none;
+    }
+    .mobpage-news {
+        display: none;
+    }
+    .slides {
+        margin-top: 50px;
+    }
+}
+
+
+/* dropdown state select */
+
+.deskdiv1 {
+    width: 100%;
+    height: 68px;
+}
+
+.mat-card1 {
+    box-shadow: 1px 5px 2px -2px rgb(0 0 0 / 20%), 1px 5px 2px 1px rgb(0 0 0 / 14%);
+}
+
+
+.bg4 {
+    background-color: white;
+}
+
+.mobdiv4 {
+    height: 43px;
+    padding-top: 8px;
+    border-radius: none;
+}
+
+.availabilitybox {
+    height: auto;
+    padding-top: 8px;
+    border-radius: none;
+}
+
+.f_color5b {
+    font-family: 'Rubik' !important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    color: #000000;
+}
+
+.pdr10 {
+    padding-right: 10px;
+}
+
+.pdr12 {
+    padding-right: 12px;
+}
+
+
+  

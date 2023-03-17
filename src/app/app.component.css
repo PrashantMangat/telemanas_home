@@ -1,14 +1,7 @@
 /* Mobile View */
 
 @media only screen and (max-width:576px) {
-    .nav-item{
-        margin: 30px;
-        padding-right: 30px;
-        font-size: 14px;
-        justify-content: center;
-        font-weight: 600;
-    }
-    .mobbtext1{
+    .mobbtext1 {
         padding-top: 5px;
     }
     .mobjumbotron {
@@ -74,12 +67,26 @@
     .mobbtext {
         width: -webkit-fill-available;
     }
+    .nav-item{
+        margin: 30px;
+        padding-right: 30px;
+        font-size: 14px;
+        justify-content: center;
+        font-weight: 600;
+    }
 }
 
 
 /* Tab View */
 
 @media only screen and (max-width:768px) {
+    .nav-item{
+        margin: 30px;
+        padding-right: 30px;
+        font-size: 14px;
+        justify-content: center;
+        font-weight: 600;
+    }
     .jumbotron {
         display: none;
     }
@@ -110,7 +117,17 @@
 /* Tab View Two */
 
 @media only screen and (min-width:769px) and (max-width:992px) {
+    .nav-item{
+        margin: 30px;
+        padding-right: 30px;
+        font-size: 14px;
+        justify-content: center;
+        font-weight: 600;
+    }
     #desktopmenu{
+        display: none;
+    }
+    #desktopmenu1{
         display: none;
     }
     .jumbotron {
@@ -198,7 +215,30 @@
         padding-top: 3rem;
     }
 }
+.leftheadinglogo{
+    margin-left: -70px;
+}
 
+#desktopmenu {
+    margin-top: -8px;
+    padding-top: 20px;
+    padding-right: 35px;
+    background: #E7F0EF;
+    height: 270px;
+    position: fixed;
+    color: #000;
+    list-style: none;
+}
+#desktopmenu1 {
+    margin-top: -8px;
+    padding-top: 20px;
+    padding-right: 35px;
+    background: #E7F0EF;
+    height: 130px;
+    position: fixed;
+    color: #000;
+    list-style: none;
+}
 .brand {
     width: 190px !important;
     height: 60px;
@@ -212,7 +252,6 @@
     height: 60px;
     margin-left: 120px;
 }
-
 .jumbotron {
     position: fixed;
     width: 100%;
@@ -222,15 +261,7 @@
     z-index: 99;
     padding: 0;
 }
-.text-white:hover{
-    font-weight: bold;
-    /* font-size: 20px; */
-    transition: all .2s ease;
-}
-.arrowdown{
-    display: inline-flex;
-    vertical-align: middle;
-}
+
 .navBar {
     position: absolute;
     right: 10%;
@@ -238,19 +269,7 @@
     top: 75px;
     margin-bottom: 20px;
 }
-#desktopmenu {
-    margin-top: -8px;
-    padding-top: 20px;
-    padding-right: 35px;
-    background: #E7F0EF;
-    height: 270px;
-    position: fixed;
-    color: #000;
-    list-style: none;
-}
-.mobview {
-    background-color: #E7F0EF;
-}
+
 .navBarone {
     margin-top: 10px;
     position: absolute;
@@ -274,7 +293,7 @@
     margin-left: 2.5rem;
     margin-top: 15px;
     font-weight: bold;
-   padding-bottom: 6px;
+    padding-bottom: 6px;
 }
 
 .faq {
@@ -283,16 +302,19 @@
     background-color: #E98037;
     cursor: pointer;
     color: #fff;
-    /* width: auto; */
     text-align: center;
     margin-bottom: 7px;
     padding-right: 10px;
     padding-left: 10px;
 }
-
+::ng-deep .mat-radio-label {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    vertical-align: unset !important;
+}
 .active,
 .nav-link:hover {
-    /* background-color: #f1d372; */
     border-radius: 5px;
     padding-left: 10px;
     /* padding-bottom: 10px; */
@@ -305,7 +327,6 @@
 }
 
 .common_text2:hover {
-    /* color: #40914C; */
     background-color: #40914C;
     color: #fff;
 }
@@ -339,7 +360,9 @@
         padding-top: 0rem;
     }
 }
-
+.mobview {
+    background-color: #E7F0EF;
+}
 @media only screen and (min-width: 767px) {
     .container-app {
         padding-top: 3rem;
@@ -363,7 +386,10 @@
     top: 0px;
     color: #40914C;
 }
-
+.arrowdown{
+    display: inline-flex;
+    vertical-align: middle;
+}
 .nav-item {
     line-height: 1.6;
     margin-right: 0.2rem;
@@ -410,9 +436,7 @@
 .nav-item-lan:hover mat-icon {
     color: #000000 !important;
 }
-.leftheadinglogo{
-    margin-left: -70px;
-}
+
 .sm {
     font-size: 14px !important;
 }
@@ -432,12 +456,15 @@
     justify-content: center;
     background: #CFDFEC;
     margin-top: 5px;
-    /* padding-bottom: 10px; */
 }
-
 
 .text-white {
     color: white;
+}
+.text-white:hover{
+    font-weight: bold;
+    /* font-size: 20px; */
+    transition: all .2s ease;
 }
 
 ::ng-deep .menu_container_0 {
@@ -475,7 +502,6 @@
     line-height: 20px !important;
 }
 
-:host ::ng-deep .mat-select-value {
-    color: #40914C !important;
-    font-size: 16px;
+::ng-deep .mat-select-value {
+    color: #40914C;
 }

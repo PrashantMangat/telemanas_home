@@ -1,0 +1,63 @@
+@media only screen and (max-width:576px) {
+    .panel{
+        padding-top: 120px;
+    }
+    .page-section {
+        margin-top: 90px;
+        margin-left: -20px;
+    }
+    #content {
+        float: right;
+        width: 90%;
+        margin-top: 40px;
+    }
+    .Heading {
+        font-size: 20px;
+        font-weight: 1000;
+        margin-top: -120px;
+    }
+}
+@media only screen and (min-width:576px) {
+    
+}
+.Heading {
+    font-size: 24px;
+    font-weight: 1000;
+}
+.panel {
+    padding-top: -70px;
+}
+.scrollContainer div.panel {
+    overflow: hidden;
+    padding-right: 30px;
+}
+@media only screen and (min-width:577px) and (max-width:768px) {
+    #content {
+        float: right;
+        width: 90%;
+        margin-top: 50px;
+    }
+}
+@media only screen and (min-width:993px) and (max-width:1200px) {
+    #content {
+        float: right;
+        width: 97%;
+        margin-top: 50px;
+    }
+}
+@media only screen and (min-width:1201px) {
+    .scrollContainer div.panel {
+        padding-top: 20px;
+        overflow: hidden;
+        padding-right: 30px;
+    }
+    #content {
+        float: right;
+        width: 97%;
+        margin-top: 70px;
+    }
+    .Heading {
+        font-size: 24px;
+        font-weight: 1000;
+    }
+}

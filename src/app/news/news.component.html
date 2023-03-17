@@ -1,0 +1,51 @@
+<div class="container mt-3">
+    <nav class="">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/#/home">{{'teleheader.home' | translate}}</a></li>
+            <mat-icon>chevron_right</mat-icon>
+            <li class="breadcrumb-item"><strong>{{'homepage.news' | translate}}</strong></li>
+        </ol>
+    </nav>
+    <hr style="height: .04em; border:none;color:#333;background-color:#333; margin-top: -2px;">
+
+    <div class="page-news">
+        <div class="row" style="margin-bottom: 10px;  margin-top: 15px; margin-left: -45px;">
+            <div class="col-10">
+                <p style="font-size: 36px; font-weight: bold;" class="text-left heading">{{'homepage.news' | translate }}</p>
+            </div>
+        </div>
+
+        <div class="row mt-1" *ngFor="let faq of newsData">
+            <div class="row newsrowdiv col-md-12" style="background: white; margin-bottom: 10px;  box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.3);" (click)="getNewsRecord(faq)">
+                <div class="col-10 divstyle">
+                    <p class="newstitle">{{ faq.newstitle }}</p>
+                </div>
+                <div class="col-2 divstyle">
+                    <p style="padding-left: 30px" class="newstitle">{{ faq.dateOfPublish}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobpage-news">
+        <div class="mobnewsrow">
+            <div class="col-10">
+                <p style="font-weight: bold;">{{'homepage.news' | translate }}</p>
+            </div>
+        </div>
+
+        <div class="mt-1 mobrow" *ngFor="let faq of newsData">
+            <div id="example2" class="row mobrow col-md-12" style=" box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.3); background: white; margin-top: 10px; width: 94%;" (click)="getNewsRecord(faq)">
+                <div style="width: 50%;">
+                    <p class="newstitle">{{ faq.newstitle }}</p><br>
+                </div>
+                <div style="width: 15%;"></div>
+                <div style="width: 35%;">
+                    <p style="padding-left: 30px" class="newstitle">{{ faq.dateOfPublish}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 mt-3 mobbtn">
+        <p routerLink="/home" class="btn1">{{'Common.GoBack' | translate }}</p>
+    </div>
+</div>

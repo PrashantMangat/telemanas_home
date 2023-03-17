@@ -1,0 +1,166 @@
+<ul class="slides">
+    <input type="radio" name="radio-btn" id="img-1" checked />
+    <li class="slide-container">
+        <div class="slide">
+            <img class="imgdesk" src="/assets/img/header/WebP/image1.webp" />
+            <img class="imgmob" height="360" src="/assets/img/header/WebP/imageMob1.webp" />
+
+        </div>
+        <div class="nav">
+            <label for="img-2" class="prev">&#x2039;</label>
+            <label for="img-2" class="next">&#x203a;</label>
+        </div>
+    </li>
+    <input type="radio" name="radio-btn" id="img-2" />
+    <li class="slide-container">
+        <div class="slide">
+            <img class="imgdesk" src="/assets/img/header/WebP/image2.webp" />
+            <img class="imgmob" src="/assets/img/header/WebP/imageMob2.webp" />
+        </div>
+        <div class="nav">
+            <label for="img-1" class="prev">&#x2039;</label>
+            <label for="img-1" class="next">&#x203a;</label>
+        </div>
+    </li>
+    <li class="nav-dots">
+        <label for="img-1" class="nav-dot" id="img-dot-1"></label>
+        <label for="img-2" class="nav-dot" id="img-dot-2"></label>
+    </li>
+</ul>
+
+
+<div class="newrow col-md-10 offset-md-2">
+    <!-- desktop view -->
+    <div class="test deskView phoneNumber1" style="text-align: center;">
+        <a id="inner3" [href]="'tel:' + location.phoneNumbertwo" class="phoneNumber">
+            <div id="inner3" class="phoneicon" style="padding-right: 40px; padding-bottom: 100px;">
+            </div>
+            {{location.phoneNumbertwo | phoneFilter}}
+        </a>
+
+        <div id="inner2" style="padding-left: 20px; padding-right: 20px;">
+            <strong>OR</strong>
+        </div>
+
+        <a id="inner1" [href]="'tel:' + location.phoneNumber" class="phoneNumber">
+            <div id="inner3" class="phoneicon" style="padding-right:40px; padding-bottom: 100px;">
+            </div>
+            {{location.phoneNumber | phoneFilter}}
+        </a>
+    </div>
+    <!-- mob view -->
+    <div class="testMob mobphoneNumber1" style="margin-top: 2px; text-align: center;">
+        <a id="" [href]="'tel:' + location.phoneNumbertwo" class="phoneNumber2 mobphone">
+            <div id="" class="mobphoneicon">
+            </div>
+            <strong><a style="color: #E98037;" [href]="'tel:' + location.phoneNumbertwo">{{location.phoneNumbertwo |
+                    phoneFilter}}</a></strong>
+        </a>
+        <div id="inner2" style="padding-top: 10px; padding-bottom: 10px;">
+            <strong>OR</strong>
+        </div>
+
+        <a id="inner1" [href]="'tel:' + location.phoneNumber" class="phoneNumber2 mobphone">
+            <div id="" class="mobphoneicon"></div>
+            <strong><a style="color: #E98037;" [href]="'tel:' + location.phoneNumber">{{location.phoneNumber |
+                    phoneFilter}}</a></strong>
+
+        </a>
+    </div>
+    <h5 class=" text-center mobviewtext" style="color: black; padding-top: 30px;">
+        <strong>{{'homepage.dialone' |translate}} {{'homepage.dialtwo' |translate}}</strong>
+    </h5>
+    <h5 class=" text-center deskviewtext" style="color: black; padding-top: 15px;">
+        <strong>{{'homepage.dialone' |translate}} </strong>
+    </h5>
+    <h5 class=" text-center deskviewtext" style="color: black; ">
+        <strong>{{'homepage.dialtwo' |translate}}</strong></h5>
+    <!-- <hr> -->
+    <!-- <div class="row deskView" style="text-align: center;">
+        <div class="col-3 mt-3" style="text-align: center;">
+            <div class="heading" style="font-weight: bold; text-align: right; ">{{'homepage.ServiceAvailability' |translate}} :</div>
+        </div>
+        <div class="deskdiv1 mat-card1 bg4 mobdiv4 col-3 ml-1" style="margin-top: 5px; border-radius: 5px;">
+            <mat-select class="f_color5b text-left pdr10 pdr12" placeholder="{{'homepage.select_state' | translate}}" (selectionChange)="selectedState($event.value)">
+                <mat-option *ngFor="let state of states" [value]="state.stateid">{{state.stateName | titlecase}}</mat-option>
+            </mat-select>
+        </div>
+        <div class="deskdiv1 mat-card1 bg4 availabilitybox  col-5" *ngFor="let avail of serviceData" style="margin-top: 5px; margin-left: 10px;  width: 50%;  padding: 10px;font-weight: bold; text-align: left; box-shadow: none;">
+            <p> {{avail.availability}} </p>
+        </div>
+    </div> -->
+
+    <!-- <div class="card-container mobphoneNumber1">
+    <a class="text-left heading" style="font-weight: bold; text-align: center; ">
+            {{'homepage.ServiceAvailability' |translate}}  :
+        </a>
+        <a class="card">
+            <mat-select class="f_color5b text-left pdr10 pdr12" placeholder="{{'homepage.select_state' | translate}}" (selectionChange)="selectedState($event.value)">
+                <mat-option *ngFor="let state of states" [value]="state.stateid">{{state.stateName | titlecase}}</mat-option>
+            </mat-select>
+        </a>
+     <a class="card availabilitybox heading" *ngFor="let avail of serviceData" style="margin-top: 5px;  font-weight: bold; text-align: center;box-shadow: none"> 
+    {{avail.availability}}
+    </a>
+    </div> -->
+
+
+</div>
+<div class="newrow2  col-md-10 offset-md-2">
+</div>
+
+<!-- Mobile View -->
+<div class="mobpage-news">
+    <div class="mobnewsrow">
+        <div class="col-8">
+            <h4 class="text-left heading" style="font-weight: bold;">{{'homepage.news' | translate }}</h4>
+        </div>
+        <div routerLink="/News" class="col-4 showdiv">
+            <p class="btn1">{{'homepage.ShowAll' | translate }}</p>
+        </div>
+    </div>
+
+    <div class="tabnewsrow row" style="margin-bottom: 10px;  margin-top: 15px; margin-left: -45px;">
+        <div class="col-10">
+            <p style="font-size: 36px; font-weight: bold;" class="text-left heading">{{'homepage.news' | translate }}</p>
+        </div>
+        <div routerLink="/News" style="display: flex; justify-content: right; margin-top: 10px;" class="col-2">
+            <p class="btn1">{{'homepage.ShowAll' | translate }}</p>
+        </div>
+    </div>
+
+    <div class="mt-1 mobrow1" *ngFor="let faq of newsData">
+        <div id="example2" class="row mobrow col-md-12" (click)="getNewsRecord(faq)">
+            <div style="width: 50%;">
+                <p class="newstitle">{{ faq.newstitle }}</p><br>
+            </div>
+            <div style="width: 15%;"></div>
+            <div style="width: 35%;">
+                <p class="newstitle datepublish">{{ faq.dateOfPublish}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Desktop table view -->
+<div class="page-news">
+    <div class="row" style="margin-bottom: 10px;  margin-top: 15px; margin-left: -45px;">
+        <div class="col-10">
+            <p style="font-size: 36px; font-weight: bold;" class="text-left heading">{{'homepage.news' | translate }}</p>
+        </div>
+        <div routerLink="/News" style="display: flex; justify-content: right; margin-top: 10px;" class="col-2">
+            <p class="btn1">{{'homepage.ShowAll' | translate }}</p>
+        </div>
+    </div>
+
+    <div class="row mt-1" *ngFor="let faq of newsData">
+        <div class="row col-md-12" style="background: white; margin-bottom: 10px;  box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.3);" (click)="getNewsRecord(faq)">
+            <div class="col-10 divstyle">
+                <p class="newstitle">{{ faq.newstitle }}</p><br>
+            </div>
+            <div class="col-2 divstyle">
+                <p style="padding-left: 30px; margin-left: -90px; justify-content: right; display: flex;" class="newstitle">{{ faq.dateOfPublish}}</p>
+            </div>
+        </div>
+    </div>
+</div>

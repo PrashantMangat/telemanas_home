@@ -1,8 +1,11 @@
-// import { version } from '..';
+
 export const environment = {
-  version: '1.0.0',
-  production: true,
-  cors: 'https://telemanas-dev.iiitb.ac.in',
-  baseUrl1: 'https://telemanas-dev.iiitb.ac.in/TELEMANAS',
+  version: '"4.8.1"',
+  production: false,
+
+  // // dev1
+  baseUrl: 'http://65.2.126.21/TELEMANAS/',
+  versionUrl: 'http://65.2.126.21/telemanas_home/version.json',
+  cors: 'http://65.2.126.21/',
 
 };

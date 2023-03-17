@@ -34,9 +34,6 @@
 }
 
 @media screen and (max-width: 767px) {
-    /* .mobfootertext{
-        font-size: 12px;
-    } */
     .marqueImag {
         padding-left: 15px;
         padding-right: 15px;
@@ -58,7 +55,6 @@
 }
 
 .deskfootertext {
-    /* font-size: 14px; */
     font-family: 'Rubik';
     font-weight: 500;
 }

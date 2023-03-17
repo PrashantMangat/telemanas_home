@@ -1,98 +1,151 @@
-import { MAT_DATE_LOCALE } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { LocationStrategy, HashLocationStrategy, DatePipe } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './auth/auth.guard';
-import { AuthService } from './auth/auth.service';
-import { AppMaterialModule } from './app_material/app-material.module';
-import { HeaderComponent } from './header/header.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { AddUsersComponent } from './add-users/add-users.component';
-import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
-import { BnNgIdleService } from 'bn-ng-idle';
-import { ManageUsersComponent } from './manage-users/manage-users.component';
-import { TokenInterceptor } from '../app/services/token.interceptor';
-import { SortPipe } from '../app/utilities/sort-pipe';
-import { UpdatePassComponent } from './update-pass/update-pass.component';
-import { PassGuardService } from '../app/auth/pass-guard.service';
-import { AdminGuardService } from '../app/auth/admin-guard.service';
-import { MHProffGuardService } from '../app/auth/mhProff-guard.service';
-import { EditUserComponent } from './edit-user/edit-user.component';
-import { ViewDetailsComponent } from './view-details/view-details.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { ReportComponent } from './report/report.component';
-import { ChartsModule } from 'ng2-charts';
-import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
-import { IndiamapComponent } from './indiamap/indiamap.component';
-import { MapComponent } from './map/map.component';
-import { MapInfoComponent } from './map-info/map-info.component';
-import { CountDistrictService } from './services/count.service';
-import { DataService } from './services/data.service';
-import { HomepageComponent } from './homepage/homepage.component';
-import { AdminloginComponent } from './adminlogin/adminlogin.component';
-import { DashboardhomeComponent } from './dashboardhome/dashboardhome.component';
-import { HomeindiamapComponent } from './homeindiamap/homeindiamap.component';
+import { GeneralService } from './general.service';
+import { VersionCheckService } from './version-check.service';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NumberDirective } from './utilities/number.directive';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient } from '@angular/common/http';
-import { HomeMapInfoComponent } from './home-map-info/home-map-info.component';
-import { HomeMapComponent } from './home-map/home-map.component';
+import { specialPipe } from './replacespecial.pipe';
+import { AddressDirective } from './utilities/address.directive';
+import { NameDirective } from './utilities/name.directive';
+import { OrgnameDirective } from './utilities/orgname.directive';
+import { AlphaDirective } from './utilities/alphabet.directive';
+import { AlphaNumDirective } from './utilities/aphaNum.directive';
+import { UsernameDirective } from './utilities/username.directive';
+import { PasswordDirective } from './utilities/password.directive';
+import { MhmsidDirective } from './utilities/mhmsid.directive';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
+import { TokenInterceptor } from './token.interceptor';
+import { RouteGuard } from './route-guard';
+import { FaqComponent } from './faq/faq.component';
+import { NewsComponent } from './news/news.component';
+import { NewsDetailsComponent } from './news-details/news-details.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { PhoneFilterPipe } from './phone-filter.pipe';
 import { FooterComponent } from './shared/footer/footer.component';
-import { TestmapComponent } from './testmap/testmap.component';
-// import { specialPipe } from './replacespecial.pipe';
-import { NgxLoadingModule } from "ngx-loading";
-import { Map1Component } from './map1/map1.component';
-import { Map2Component } from './map2/map2.component';
+import {
+  MatAutocompleteModule,
+  MatInputModule,
+  MatBadgeModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatListModule,
+  MatMenuModule,
+  MatPaginatorModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatStepperModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatTreeModule,
+  MatNativeDateModule,
+  MAT_DATE_LOCALE
+} from '@angular/material';
+import { HelpComponent } from './shared/help/help.component';
+import { UsefullinksComponent } from './usefullinks/usefullinks.component';
+import { AimobjComponent } from './aimobj/aimobj.component';
+import { BgrationaleComponent } from './bgrationale/bgrationale.component';
+import { OrgstructureComponent } from './orgstructure/orgstructure.component';
+import { IECPromotionalMaterialComponent } from './iecpromotional-material/iecpromotional-material.component';
+import { NewsletterComponent } from './newsletter/newsletter.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    HeaderComponent,
-    DashboardComponent,
-    AddUsersComponent,
-    ManageUsersComponent,
-    SortPipe,
-    UpdatePassComponent,
-    EditUserComponent,
-    ViewDetailsComponent,
-    AdminDashboardComponent,
-    ReportComponent,
-    PrivacyPolicyComponent,
-    IndiamapComponent,
-    MapComponent,
-    MapInfoComponent,
-    HomepageComponent,
-    AdminloginComponent,
-    DashboardhomeComponent,
-    HomeindiamapComponent,
-    HomeMapInfoComponent,
-    HomeMapComponent,
+    NumberDirective,
+    AddressDirective,
+    NameDirective,
+    OrgnameDirective,
+    AlphaDirective,
+    AlphaNumDirective,
+    UsernameDirective,
+    PasswordDirective,
+    MhmsidDirective,
+    routingComponents,
+    FaqComponent,
+    specialPipe,
+    NewsComponent,
+    NewsDetailsComponent,
+    ContactUsComponent,
+    PhoneFilterPipe,
     FooterComponent,
-    TestmapComponent,
-    Map1Component,
-    Map2Component,
+    HelpComponent,
+    UsefullinksComponent,
+    AimobjComponent,
+    BgrationaleComponent,
+    OrgstructureComponent,
+    IECPromotionalMaterialComponent,
+    NewsletterComponent,
   ],
   imports: [
-
-    HttpClientModule,
     HttpModule,
+    HttpClientModule,
+    BrowserModule,
+    AppRoutingModule,
     FormsModule,
+    MatIconModule,
     ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    NgxSpinnerModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule,
     BrowserModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule,
     AppRoutingModule,
     RouterModule,
-    AppMaterialModule,
-    ChartsModule,
+    MatIconModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -100,28 +153,19 @@ import { Map2Component } from './map2/map2.component';
         deps: [HttpClient]
 
       }
-    }),
-    NgxLoadingModule.forRoot({})
+    })
   ],
-  providers: [
-    AuthGuard,
-    AuthService,
-    DatePipe,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [GeneralService,
     NgxSpinnerService,
     NgxSpinnerModule,
-    PassGuardService,
-    MHProffGuardService,
-    AdminGuardService,
-    BnNgIdleService,
-    CountDistrictService,
-    DataService,
+    VersionCheckService,
+    RouteGuard,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
   ],
-
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
 export function HttpLoderFatactroy(http: HttpClient) {
